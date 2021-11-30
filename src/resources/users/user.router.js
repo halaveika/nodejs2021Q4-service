@@ -1,30 +1,19 @@
-const {getAll} = require('./user.service');
+const { getUsers, getUser, postUser, putUser, deleteUser } = require('./user.service');
 
-// router.route('/').get(async (req, res) => {
-//   const users = await usersService.getAll();
-//   // map user fields to exclude secret fields like "password"
-//   res.json(users.map(User.toResponse));
-// });
 
-// module.exports = router;
+function userRouter(app, options, done) {
+  
+  app.get('/users', getUsers)
 
-function itemRoutes(app, options, done) {
-  // Get all items
-  app.get('/users', getAll)
+  app.get('/users/:id', getUser)
 
-  // // Get single items
-  // app.get('/items/:id', getItemOpts)
+  app.post('/users', postUser)
 
-  // // Add item
-  // app.post('/items', postItemOpts)
+  app.delete('/users/:id', deleteUser)
 
-  // // Delete item
-  // app.delete('/items/:id', deleteItemOpts)
-
-  // // Update item
-  // app.put('/items/:id', updateItemOpts)
+  app.put('/users/:id', putUser)
 
   done()
 }
 
-module.exports = itemRoutes
+module.exports = userRouter
