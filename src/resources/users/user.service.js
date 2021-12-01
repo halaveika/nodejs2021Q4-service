@@ -73,7 +73,7 @@ const deleteUser = {
     },
     response: {
       204: {
-        description: 'Service is healthy',
+        description: 'Deleted',
         type: 'null',
       },
     },

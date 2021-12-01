@@ -40,7 +40,6 @@ const getAllUsers = async() => userStore;
 const getUserById = async(id) => userStore.find(user => user.id === id)
 
 const createUser = async(user) => {
-  if(!user.name || !user.login || !user.password) {return undefined}
   const newUser = { id: uuidv4(), ...user};
   userStore.push(newUser);
   return newUser;
