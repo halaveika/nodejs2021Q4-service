@@ -9,8 +9,6 @@ const getAllTasksHandler = async(req, reply) => {
 const getTaskByIdHandler = async(req, reply) => {
   const { boardId, taskId } = req.params;
   const task = await getTaskById(boardId, taskId);
-  console.dir('TASKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
-  console.dir(task);
   if(!task) {
     reply.code(404).send();
   }
@@ -21,6 +19,7 @@ const createTaskHandler = async(req, reply) => {
   const { boardId} = req.params;
   const task = req.body;
   const newTask = await createTask(task,boardId);
+
   if(!newTask) {
     reply.code(400).send();
   }

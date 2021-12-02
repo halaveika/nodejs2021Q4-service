@@ -7,7 +7,7 @@ const getAllTasks = async(boardId) => taskStore.filter(task => task.boardId === 
 const getTaskById = async(boardId, taskId) => taskStore.find(task => task.id === taskId && task.boardId === boardId)
 
 const createTask = async(task, boardId) => {
-  const newTask = {...task,id: uuidv4(),boardId};
+  const newTask = {...task,id: uuidv4(), boardId};
   taskStore.push(newTask);
   return newTask;
 }

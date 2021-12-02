@@ -5,13 +5,13 @@ function boardRouter(app, options, done) {
   
   app.get('/boards', getBoards)
 
-  app.get('/boards/:id', getBoard)
+  app.get('/boards/:boardId', getBoard)
 
   app.post('/boards', postBoard)
 
-  app.delete('/boards/:id', deleteBoard)
+  app.delete('/boards/:boardId', deleteBoard)
 
-  app.put('/boards/:id', putBoard)
+  app.put('/boards/:boardId', putBoard)
 
   done()
 }

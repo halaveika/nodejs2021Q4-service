@@ -6,8 +6,8 @@ const getAllBoardsHandler = async(req, reply) => {
 }
 
 const getBoardByIdHandler = async(req, reply) => {
-  const { id } = req.params;
-  const board = await getBoardById(id);
+  const { boardId } = req.params;
+  const board = await getBoardById(boardId);
   if(!board) {
     reply.code(404).send();
   }
@@ -25,8 +25,8 @@ const createBoardHandler = async(req, reply) => {
 
 const updateBoardByIdHandler = async(req, reply) => {
   const board = req.body;
-  const { id } = req.params;
-  const updatedBoard = await updateBoardById(board,id);
+  const { boardId } = req.params;
+  const updatedBoard = await updateBoardById(board,boardId);
   if(!updatedBoard) {
     reply.code(400).send();
   }
@@ -34,8 +34,8 @@ const updateBoardByIdHandler = async(req, reply) => {
 }
 
 const deleteBoardByIdHandler = async(req, reply) => {
-  const { id } = req.params;
-  const isDeleted = await deleteBoardById(id);
+  const { boardId } = req.params;
+  const isDeleted = await deleteBoardById(boardId);
   if(!isDeleted) {
     reply.code(401).send();
   }

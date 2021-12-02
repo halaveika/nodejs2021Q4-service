@@ -1,5 +1,6 @@
 const { v4: uuidv4 } = require('uuid');
 const {taskStore, boardStore} = require('../../db/store');
+const {deletTasksWithBoard} = require('../../utils/helper');
 
 const getAllBoards = async() => boardStore;
 
@@ -22,17 +23,11 @@ const updateBoardById = async(board, id) => {
 }
 
 const deleteBoardById = async(id) => {
-  console.log(`boardId: ${id}`);
   const indexDeletedBoard = boardStore.findIndex(board => board.id === id);
   if (indexDeletedBoard === -1) {
     return false;
   }
-  // taskStore = taskStore.filter(task => task.boardId !== id);
-  taskStore.forEach((task,index,arr) => {
-    if(task.boardId === id){
-      arr.splice(index,1);
-  }})
-  console.dir(taskStore)
+  deletTasksWithBoard(taskStore,id)
   return boardStore.splice(indexDeletedBoard, 1)[0];
 }
 

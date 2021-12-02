@@ -1,5 +1,6 @@
 const { v4: uuidv4 } = require('uuid');
 const {taskStore,userStore} = require('../../db/store');
+const {userIdToNull} = require('../../utils/helper');
 
 const getAllUsers = async() => userStore;
 
@@ -26,9 +27,7 @@ const deleteUserById = async(id) => {
   if (index === -1) {
     return false;
   }
-  /* eslint-disable */ 
-  taskStore.forEach(task => {if (task.userId === id) {task.userId = null}});
-   /* eslint-enable */ 
+  userIdToNull(taskStore,id);
   return userStore.splice(index, 1)[0];
 }
 

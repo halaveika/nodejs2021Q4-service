@@ -17,7 +17,7 @@ const getBoards = {
 const getBoard = {
   schema: {
     querystring: {
-      id: { type: 'string' }
+      boardId: { type: 'string' }
     },
     response: {
       200: responseBoardSchema,
@@ -39,7 +39,7 @@ const postBoard = {
 const putBoard = {
   schema: {
     querystring: {
-      id: { type: 'string' }
+      boardId: { type: 'string' }
     },
     body: requestBoardSchema,
     response: {
@@ -53,7 +53,7 @@ const deleteBoard = {
 
   schema: {
     querystring: {
-      id: { type: 'string' }
+      boardId: { type: 'string' }
     },
     response: {
       204: {
