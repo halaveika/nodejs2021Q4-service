@@ -9,7 +9,7 @@ const Column = {
 
 const requestBoardSchema = {
   type: 'object',
-  required: ['title'],
+  required: ['title','columns'],
   properties: {
     title: { type: 'string' },
     columns:{
@@ -21,6 +21,7 @@ const requestBoardSchema = {
 
 const responseBoardSchema = {
   type: 'object',
+  required: ['title','id','columns'],
   properties: {
     id: { type: 'string' },
     title: { type: 'string' },

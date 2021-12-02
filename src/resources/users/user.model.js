@@ -1,5 +1,6 @@
 const responseUserSchema = {
   type: 'object',
+  required: ['id','name','login'],
   properties: {
     id: { type: 'string' },
     name: { type: 'string' },
