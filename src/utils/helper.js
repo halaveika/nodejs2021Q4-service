@@ -7,9 +7,10 @@ const deletTasksWithBoard = (taskStore,id) => {
 }
 
 const userIdToNull = (taskStore,id) => {
-   /* eslint-disable */ 
-   taskStore.forEach(task => {if (task.userId === id) {task.userId = null}});
-   /* eslint-enable */ 
+   taskStore.forEach((task,index) => {if (task.userId === id) {
+    const markNullTask = {...task, userId: null }
+    taskStore.splice(index, 1, markNullTask);
+    }});
 }
 
 module.exports = {deletTasksWithBoard,userIdToNull}
