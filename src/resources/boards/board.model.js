@@ -7,7 +7,19 @@ const Column = {
   }
 }
 
-const Board = {
+const requestBoardSchema = {
+  type: 'object',
+  required: ['title'],
+  properties: {
+    title: { type: 'string' },
+    columns:{
+      type: 'array',
+      items: Column,
+    }
+  }
+}
+
+const responseBoardSchema = {
   type: 'object',
   properties: {
     id: { type: 'string' },
@@ -21,7 +33,8 @@ const Board = {
 
 
 
-module.exports = Board;
+
+module.exports = {requestBoardSchema,responseBoardSchema};
 
 
 

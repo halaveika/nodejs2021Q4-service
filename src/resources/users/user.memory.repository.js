@@ -1,39 +1,5 @@
-
 const { v4: uuidv4 } = require('uuid');
- 
-const userStore = [
- {
-   id: uuidv4(),
-   name: 'Alex',
-   login: 'Alex123',
-   password: 'uhyags8d924yhhA'
- },
- {
-   id: uuidv4(),
-   name: 'Olya',
-   login: 'Olya123',
-   password: 'ugsgs892f4yhhA'
- },
- {
-   id: uuidv4(),
-   name: 'Petya',
-   login: 'Petya123',
-   password: 'uhfffffgyags8924yhhA'
- },
- {
-   id: uuidv4(),
-   name: 'Vasya',
-   login: 'Vasya123',
-   password: 'uhyags8924yhhA'
- },
- {
-   id: uuidv4(),
-   name: 'Zhora',
-   login: 'Zhora123',
-   password: 'uhffsfyags8924yhhA'
- }
-]
-
+const {taskStore,userStore} = require('../../db/store');
 
 const getAllUsers = async() => userStore;
 
@@ -45,7 +11,7 @@ const createUser = async(user) => {
   return newUser;
 }
 
-const updateUserById = (user, id) => {
+const updateUserById = async(user, id) => {
   const index = userStore.findIndex(item => item.id === id);
   let updatedUser;
   if (index !== -1) {
@@ -60,7 +26,9 @@ const deleteUserById = async(id) => {
   if (index === -1) {
     return false;
   }
-
+  /* eslint-disable */ 
+  taskStore.forEach(task => {if (task.userId === id) {task.userId = null}});
+   /* eslint-enable */ 
   return userStore.splice(index, 1)[0];
 }
 

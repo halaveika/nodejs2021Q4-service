@@ -1,4 +1,4 @@
-const Board = require('./board.model');
+const {requestBoardSchema,responseBoardSchema} = require('./board.model');
 const { getAllBoardsHandler,getBoardByIdHandler,createBoardHandler, updateBoardByIdHandler,deleteBoardByIdHandler } = require('./board.handler');
 
 
@@ -7,7 +7,7 @@ const getBoards = {
       response: {
         200: {
           type: 'array',
-          items: Board,
+          items: responseBoardSchema,
         },
       },
     },
@@ -20,7 +20,7 @@ const getBoard = {
       id: { type: 'string' }
     },
     response: {
-      200: Board,
+      200: responseBoardSchema,
       },
     },
   handler: getBoardByIdHandler
@@ -28,16 +28,9 @@ const getBoard = {
 
 const postBoard = {
   schema: {
-    body: {
-      type: 'object',
-      required: ['title'],
-      properties: {
-        title: { type: 'string' },
-        columns: Board.properties.columns,
-      },
-    },
+    body: requestBoardSchema,
     response: {
-      201: Board,
+      201: responseBoardSchema,
     },
   },
   handler: createBoardHandler,
@@ -48,16 +41,9 @@ const putBoard = {
     querystring: {
       id: { type: 'string' }
     },
-    body: {
-      type: 'object',
-      required: ['title'],
-      properties: {
-        title: { type: 'string' },
-        columns: Board.properties.columns,
-      },
-    },
+    body: requestBoardSchema,
     response: {
-      200: Board,
+      200: responseBoardSchema,
     },
   },
   handler: updateBoardByIdHandler,

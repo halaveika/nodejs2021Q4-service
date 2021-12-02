@@ -1,11 +1,12 @@
-const bodyTaskSchema = {
+const requestTaskSchema = {
   type: 'object',
-  // required: ['title','order','description','userId','boardId','columnId'],
+  required: ['title'],
   properties: {
     title: { type: 'string' },
     order: { type: ['number','null'] },
     description: { type: 'string' },
     userId: { type: ['string','null'], default: null }, // assignee
+    boardId: { type: ['string']},
     columnId: { type: ['string','null'], default: null },
   }
 }
@@ -25,7 +26,7 @@ const responseTaskSchema = {
 }
 
 
-module.exports = {bodyTaskSchema,responseTaskSchema};
+module.exports = {requestTaskSchema,responseTaskSchema};
 
 
 

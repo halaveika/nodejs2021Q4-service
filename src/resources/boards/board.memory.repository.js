@@ -1,19 +1,17 @@
-
 const { v4: uuidv4 } = require('uuid');
-const {boardStore,taskStore} = require('../../db/store');
+const {taskStore, boardStore} = require('../../db/store');
 
 const getAllBoards = async() => boardStore;
 
 const getBoardById = async(id) => boardStore.find(board => board.id === id)
 
 const createBoard = async(board) => {
-  if(!board.title) {return undefined}
-  const newBoard = { id: uuidv4(), ...board};
+  const newBoard = { ...board, id: uuidv4()};
   boardStore.push(newBoard);
   return newBoard;
 }
 
-const updateBoardById = (board, id) => {
+const updateBoardById = async(board, id) => {
   const index = boardStore.findIndex(item => item.id === id);
   let updatedBoard;
   if (index !== -1) {
@@ -24,15 +22,17 @@ const updateBoardById = (board, id) => {
 }
 
 const deleteBoardById = async(id) => {
-  const indexDeletedBoard = boardStore.find(board => board.id === id);
+  console.log(`boardId: ${id}`);
+  const indexDeletedBoard = boardStore.findIndex(board => board.id === id);
   if (indexDeletedBoard === -1) {
     return false;
   }
-  taskStore.forEach((task,index) =>{
-    if (task.boardId === id) {
-      taskStore.splice(index, 1);
-    }
-  })
+  // taskStore = taskStore.filter(task => task.boardId !== id);
+  taskStore.forEach((task,index,arr) => {
+    if(task.boardId === id){
+      arr.splice(index,1);
+  }})
+  console.dir(taskStore)
   return boardStore.splice(indexDeletedBoard, 1)[0];
 }
 

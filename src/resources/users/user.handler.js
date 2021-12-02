@@ -1,10 +1,8 @@
-const {rmPasswordFromRes} = require('../../utils/helper')
 const {getAllUsers, getUserById, createUser, updateUserById, deleteUserById} = require('./user.memory.repository');
 
 const getAllUsersHandler = async(req, reply) => {
   const users = await getAllUsers();
-  const resp = users.map(el=> rmPasswordFromRes(el));
-  reply.code(200).send(resp);
+  reply.code(200).send(users);
 }
 
 const getUserByIdHandler = async(req, reply) => {
@@ -13,7 +11,7 @@ const getUserByIdHandler = async(req, reply) => {
   if(!user) {
     reply.code(404).send();
   }
-  reply.code(200).send(rmPasswordFromRes(user));
+  reply.code(200).send(user);
 }
 
 const createUserHandler = async(req, reply) => {
@@ -22,7 +20,7 @@ const createUserHandler = async(req, reply) => {
   if(!newUser) {
     reply.code(400).send();
   }
-  reply.code(201).send(rmPasswordFromRes(newUser));
+  reply.code(201).send(newUser);
 }
 
 const updateUserByIdHandler = async(req, reply) => {
@@ -32,7 +30,7 @@ const updateUserByIdHandler = async(req, reply) => {
   if(!updatedUser) {
     reply.code(400).send();
   }
-  reply.code(200).send(rmPasswordFromRes(updatedUser));
+  reply.code(200).send(updatedUser);
 }
 
 const deleteUserByIdHandler = async(req, reply) => {

@@ -1,4 +1,4 @@
-const User = require('./user.model');
+const {requestUserSchema,responseUserSchema} = require('./user.model');
 const { getAllUsersHandler,getUserByIdHandler,createUserHandler, updateUserByIdHandler,deleteUserByIdHandler } = require('./user.handler');
 
 
@@ -7,7 +7,7 @@ const getUsers = {
       response: {
         200: {
           type: 'array',
-          items: User,
+          items: responseUserSchema,
         },
       },
     },
@@ -20,7 +20,7 @@ const getUser = {
       id: { type: 'string' }
     },
     response: {
-      200: User,
+      200: responseUserSchema,
       },
     },
   handler: getUserByIdHandler
@@ -28,17 +28,9 @@ const getUser = {
 
 const postUser = {
   schema: {
-    body: {
-      type: 'object',
-      required: ['name','login','password'],
-      properties: {
-        name: { type: 'string' },
-        login: { type: 'string' },
-        password: { type: 'string' },
-      },
-    },
+    body: requestUserSchema,
     response: {
-      201: User,
+      201: responseUserSchema,
     },
   },
   handler: createUserHandler,
@@ -49,17 +41,9 @@ const putUser = {
     querystring: {
       id: { type: 'string' }
     },
-    body: {
-      type: 'object',
-      required: ['name','login','password'],
-      properties: {
-        name: { type: 'string' },
-        login: { type: 'string' },
-        password: { type: 'string' },
-      },
-    },
+    body: requestUserSchema,
     response: {
-      200: User,
+      200: responseUserSchema,
     },
   },
   handler: updateUserByIdHandler,

@@ -1,4 +1,4 @@
-const {bodyTaskSchema,responseTaskSchema} = require('./task.model');
+const {requestTaskSchema,responseTaskSchema} = require('./task.model');
 const { getAllTasksHandler,getTaskByIdHandler,createTaskHandler, updateTaskByIdHandler,deleteTaskByIdHandler } = require('./task.handler');
 
 
@@ -35,7 +35,7 @@ const postTask = {
     querystring: {
       boardId: { type: 'string' }
     },
-    body: bodyTaskSchema,
+    body: requestTaskSchema,
     response: {
       201: responseTaskSchema,
     },
@@ -49,7 +49,7 @@ const putTask = {
       boardId: { type: 'string' },
       taskId: { type: 'string' }
     },
-    body: bodyTaskSchema,
+    body: requestTaskSchema,
     response: {
       200: responseTaskSchema,
     },
