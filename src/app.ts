@@ -1,5 +1,6 @@
-const path = require('path');
-const app = require('fastify')()
+import Fastify, { FastifyInstance, RouteShorthandOptions } from 'fastify'
+import path from 'path';
+const app: FastifyInstance = Fastify({})
 app.register(require('fastify-swagger'),
 {
   mode: 'static',
@@ -17,4 +18,4 @@ app.register(require('./resources/users/user.router'));
 app.register(require('./resources/boards/board.router'));
 app.register(require('./resources/tasks/task.router'), { prefix: 'boards/:boardId'});
 
-module.exports = app;
+export default app;
