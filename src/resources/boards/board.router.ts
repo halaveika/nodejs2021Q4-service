@@ -1,4 +1,4 @@
-const { getBoards, getBoard, postBoard, putBoard, deleteBoard } = require('./board.service');
+import { getBoards, getBoard, postBoard, putBoard, deleteBoard } from './board.service';
 
 
 function boardRouter(app, options, done) {
@@ -16,4 +16,4 @@ function boardRouter(app, options, done) {
   done()
 }
 
-module.exports = boardRouter
+export default boardRouter;

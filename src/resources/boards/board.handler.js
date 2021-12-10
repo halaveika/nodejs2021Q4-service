@@ -1,11 +1,11 @@
-const {getAllBoards, getBoardById, createBoard, updateBoardById, deleteBoardById} = require('./board.memory.repository');
+import {getAllBoards, getBoardById, createBoard, updateBoardById, deleteBoardById} from './board.memory.repository';
 
-const getAllBoardsHandler = async(req, reply) => {
+export const getAllBoardsHandler = async(req, reply) => {
   const boards = await getAllBoards();
   reply.code(200).send(boards);
 }
 
-const getBoardByIdHandler = async(req, reply) => {
+export const getBoardByIdHandler = async(req, reply) => {
   const { boardId } = req.params;
   const board = await getBoardById(boardId);
   if(!board) {
@@ -14,7 +14,7 @@ const getBoardByIdHandler = async(req, reply) => {
   reply.code(200).send(board);
 }
 
-const createBoardHandler = async(req, reply) => {
+export const createBoardHandler = async(req, reply) => {
   const board = req.body;
   const newBoard = await createBoard(board);
   if(!newBoard) {
@@ -23,7 +23,7 @@ const createBoardHandler = async(req, reply) => {
   reply.code(201).send(newBoard);
 }
 
-const updateBoardByIdHandler = async(req, reply) => {
+export const updateBoardByIdHandler = async(req, reply) => {
   const board = req.body;
   const { boardId } = req.params;
   const updatedBoard = await updateBoardById(board,boardId);
@@ -33,7 +33,7 @@ const updateBoardByIdHandler = async(req, reply) => {
   reply.code(200).send(updatedBoard);
 }
 
-const deleteBoardByIdHandler = async(req, reply) => {
+export const deleteBoardByIdHandler = async(req, reply) => {
   const { boardId } = req.params;
   const isDeleted = await deleteBoardById(boardId);
   if(!isDeleted) {
@@ -41,5 +41,3 @@ const deleteBoardByIdHandler = async(req, reply) => {
   }
   reply.code(204).send();
 }
-
-module.exports = { getAllBoardsHandler,getBoardByIdHandler,createBoardHandler,updateBoardByIdHandler,deleteBoardByIdHandler };

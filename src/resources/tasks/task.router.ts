@@ -1,4 +1,4 @@
-const { getTasks, getTask, postTask, putTask, deleteTask } = require('./task.service');
+export { getTasks, getTask, postTask, putTask, deleteTask } from './task.service';
 
 
 function taskRouter(app, options, done) {
@@ -16,4 +16,4 @@ function taskRouter(app, options, done) {
   done()
 }
 
-module.exports = taskRouter
+export default taskRouter

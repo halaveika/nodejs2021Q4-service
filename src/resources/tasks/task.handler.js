@@ -1,12 +1,12 @@
-const {getAllTasks, getTaskById, createTask, updateTaskById, deleteTaskById} = require('./task.memory.repository');
+import {getAllTasks, getTaskById, createTask, updateTaskById, deleteTaskById} from './task.memory.repository';
 
-const getAllTasksHandler = async(req, reply) => {
+export const getAllTasksHandler = async(req, reply) => {
   const { boardId} = req.params;
   const task = await getAllTasks(boardId);
   reply.code(200).send(task);
 }
 
-const getTaskByIdHandler = async(req, reply) => {
+export const getTaskByIdHandler = async(req, reply) => {
   const { boardId, taskId } = req.params;
   const task = await getTaskById(boardId, taskId);
   if(!task) {
@@ -15,7 +15,7 @@ const getTaskByIdHandler = async(req, reply) => {
   reply.code(200).send(task);
 }
 
-const createTaskHandler = async(req, reply) => {
+export const createTaskHandler = async(req, reply) => {
   const { boardId} = req.params;
   const task = req.body;
   const newTask = await createTask(task,boardId);
@@ -26,7 +26,7 @@ const createTaskHandler = async(req, reply) => {
   reply.code(201).send(newTask);
 }
 
-const updateTaskByIdHandler = async(req, reply) => {
+export const updateTaskByIdHandler = async(req, reply) => {
   const task = req.body;
   const { boardId, taskId } = req.params;
   const updatedTask = await updateTaskById(task,boardId, taskId);
@@ -36,7 +36,7 @@ const updateTaskByIdHandler = async(req, reply) => {
   reply.code(200).send(updatedTask);
 }
 
-const deleteTaskByIdHandler = async(req, reply) => {
+export const deleteTaskByIdHandler = async(req, reply) => {
   const { boardId, taskId } = req.params;
   const isDeleted = await deleteTaskById(boardId, taskId);
   if(!isDeleted) {
@@ -44,5 +44,3 @@ const deleteTaskByIdHandler = async(req, reply) => {
   }
   reply.code(204).send();
 }
-
-module.exports = { getAllTasksHandler,getTaskByIdHandler,createTaskHandler,updateTaskByIdHandler,deleteTaskByIdHandler };

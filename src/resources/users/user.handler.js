@@ -1,11 +1,11 @@
-const {getAllUsers, getUserById, createUser, updateUserById, deleteUserById} = require('./user.memory.repository');
+import {getAllUsers, getUserById, createUser, updateUserById, deleteUserById}from './user.memory.repository';
 
-const getAllUsersHandler = async(req, reply) => {
+export const getAllUsersHandler = async(req, reply) => {
   const users = await getAllUsers();
   reply.code(200).send(users);
 }
 
-const getUserByIdHandler = async(req, reply) => {
+export const getUserByIdHandler = async(req, reply) => {
   const { id } = req.params;
   const user = await getUserById(id);
   if(!user) {
@@ -14,7 +14,7 @@ const getUserByIdHandler = async(req, reply) => {
   reply.code(200).send(user);
 }
 
-const createUserHandler = async(req, reply) => {
+export const createUserHandler = async(req, reply) => {
   const user = req.body;
   const newUser = await createUser(user);
   if(!newUser) {
@@ -23,7 +23,7 @@ const createUserHandler = async(req, reply) => {
   reply.code(201).send(newUser);
 }
 
-const updateUserByIdHandler = async(req, reply) => {
+export const updateUserByIdHandler = async(req, reply) => {
   const user = req.body;
   const { id } = req.params;
   const updatedUser = await updateUserById(user,id);
@@ -33,7 +33,7 @@ const updateUserByIdHandler = async(req, reply) => {
   reply.code(200).send(updatedUser);
 }
 
-const deleteUserByIdHandler = async(req, reply) => {
+export const deleteUserByIdHandler = async(req, reply) => {
   const { id } = req.params;
   const isDeleted = await deleteUserById(id);
   if(!isDeleted) {
@@ -41,5 +41,3 @@ const deleteUserByIdHandler = async(req, reply) => {
   }
   reply.code(204).send();
 }
-
-module.exports = { getAllUsersHandler,getUserByIdHandler,createUserHandler,updateUserByIdHandler,deleteUserByIdHandler };

@@ -1,4 +1,4 @@
-const { getUsers, getUser, postUser, putUser, deleteUser } = require('./user.service');
+import { getUsers, getUser, postUser, putUser, deleteUser } from './user.service';
 
 
 function userRouter(app, options, done) {
@@ -16,4 +16,4 @@ function userRouter(app, options, done) {
   done()
 }
 
-module.exports = userRouter
+export default userRouter;
