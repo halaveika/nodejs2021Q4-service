@@ -1,4 +1,4 @@
-const responseUserSchema = {
+export const responseUserSchema = {
   type: 'object',
   required: ['id','name','login'],
   properties: {
@@ -8,7 +8,7 @@ const responseUserSchema = {
   },
 }
 
-const requestUserSchema = {
+export const requestUserSchema = {
   type: 'object',
   required: ['name','login','password'],
   properties: {
@@ -18,6 +18,4 @@ const requestUserSchema = {
     password: {type: 'string'},
   },
 }
-
-module.exports = {requestUserSchema,responseUserSchema};
 

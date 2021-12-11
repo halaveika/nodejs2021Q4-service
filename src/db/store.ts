@@ -1,5 +1,5 @@
 import { User } from "../types/User.type";
-import { Task } from "../types/Task.type";
+import {Task}  from "../types/Task.type";
 import { Board } from "../types/Board.type";
 
 export const userStore:User[] = [

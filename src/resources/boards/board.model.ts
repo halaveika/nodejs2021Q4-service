@@ -1,4 +1,4 @@
-const Column = {
+export const Column = {
   type: 'object',
   properties: {
     id: { type: 'string' },
@@ -7,7 +7,7 @@ const Column = {
   }
 }
 
-const requestBoardSchema = {
+export const requestBoardSchema = {
   type: 'object',
   required: ['title','columns'],
   properties: {
@@ -19,7 +19,7 @@ const requestBoardSchema = {
   }
 }
 
-const responseBoardSchema = {
+export const responseBoardSchema = {
   type: 'object',
   required: ['title','id','columns'],
   properties: {
@@ -31,11 +31,6 @@ const responseBoardSchema = {
     }
   }
 }
-
-
-
-
-module.exports = {requestBoardSchema,responseBoardSchema};
 
 
 

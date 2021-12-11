@@ -1,4 +1,4 @@
-const requestTaskSchema = {
+export const requestTaskSchema = {
   type: 'object',
   required: ['title','order','description','columnId','userId','boardId'],
   properties: {
@@ -11,7 +11,7 @@ const requestTaskSchema = {
   }
 }
 
-const responseTaskSchema = {
+export const responseTaskSchema = {
   type: 'object',
   required: ['id','title','order','description','columnId','userId','boardId'],
   properties: {
@@ -24,9 +24,6 @@ const responseTaskSchema = {
     columnId: { type: ['string','null'], default: null },
   }
 }
-
-
-module.exports = {requestTaskSchema,responseTaskSchema};
 
 
 
