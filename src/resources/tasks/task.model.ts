@@ -15,7 +15,7 @@ export const responseTaskSchema = {
   type: 'object',
   required: ['id','title','order','description','columnId','userId','boardId'],
   properties: {
-    id: { type: 'string' },
+    id: { type: 'string', format: 'uuid' },
     title: { type: 'string' },
     order: { type: ['number','null']},
     description: { type: 'string' },

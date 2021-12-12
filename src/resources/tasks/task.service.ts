@@ -1,7 +1,6 @@
 import {requestTaskSchema,responseTaskSchema} from './task.model';
 import { getAllTasksHandler,getTaskByIdHandler,createTaskHandler, updateTaskByIdHandler,deleteTaskByIdHandler } from './task.handler';
 
-
 export const getTasks = {
     schema: {
       querystring: {

@@ -1,7 +1,8 @@
+import { FastifyInstance } from 'fastify';
 import { getBoards, getBoard, postBoard, putBoard, deleteBoard } from './board.service';
 
 
-function boardRouter(app, options, done) {
+const boardRouter = async(app:FastifyInstance):Promise<void> =>{
   
   app.get('/boards', getBoards)
 
@@ -13,7 +14,6 @@ function boardRouter(app, options, done) {
 
   app.put('/boards/:boardId', putBoard)
 
-  done()
 }
 
 export default boardRouter;

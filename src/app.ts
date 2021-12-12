@@ -1,11 +1,11 @@
-import Fastify, { FastifyInstance, RouteShorthandOptions } from 'fastify';
+import fastify, { FastifyInstance } from 'fastify';
 import * as path from 'path';
 import fastifySwagger from 'fastify-swagger';
 import boardRouter from './resources/boards/board.router';
 import userRouter from './resources/users/user.router';
 import taskRouter from './resources/tasks/task.router';
 
-const app: FastifyInstance = Fastify()
+const app: FastifyInstance = fastify()
 app.register(fastifySwagger,
 {
   mode: 'static',

@@ -1,8 +1,8 @@
+import { FastifyInstance } from 'fastify';
 import { getTasks, getTask, postTask, putTask, deleteTask } from './task.service';
 
 
-
-function taskRouter(app, options, done) {
+const taskRouter = async(app:FastifyInstance):Promise<void> => {
   
   app.get('/tasks', getTasks)
 
@@ -14,7 +14,6 @@ function taskRouter(app, options, done) {
 
   app.delete('/tasks/:taskId', deleteTask)
 
-  done()
 }
 
 export default taskRouter

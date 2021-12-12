@@ -1,3 +1,0 @@
-interface IBoardQuerystring {
-  boardId: string;
-}

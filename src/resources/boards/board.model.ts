@@ -23,7 +23,7 @@ export const responseBoardSchema = {
   type: 'object',
   required: ['title','id','columns'],
   properties: {
-    id: { type: 'string' },
+    id: { type: 'string', format: 'uuid'  },
     title: { type: 'string' },
     columns:{
       type: 'array',

@@ -1,7 +1,8 @@
+import { FastifyInstance } from 'fastify';
 import { getUsers, getUser, postUser, putUser, deleteUser } from './user.service';
 
 
-function userRouter(app, options, done) {
+const userRouter = async(app:FastifyInstance):Promise<void> => {
   
   app.get('/users', getUsers)
 
@@ -13,7 +14,6 @@ function userRouter(app, options, done) {
 
   app.put('/users/:id', putUser)
 
-  done()
 }
 
 export default userRouter;

@@ -1,6 +1,6 @@
 export type User = {
-  id: string,
+  id?: string,
   name: string,
   login: string,
-  password: string
+  password?: string
 }

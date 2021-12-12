@@ -1,11 +1,13 @@
+import { FastifyReply, FastifyRequest } from 'fastify';
 import {getAllBoards, getBoardById, createBoard, updateBoardById, deleteBoardById} from './board.memory.repository';
+import {BoardReq,BoardReqParams,BoardReqBody} from '../../types/Board.request.type';
 
-export const getAllBoardsHandler = async(req, reply) => {
+export const getAllBoardsHandler = async(req:FastifyRequest, reply:FastifyReply):Promise<void> => {
   const boards = await getAllBoards();
   reply.code(200).send(boards);
 }
 
-export const getBoardByIdHandler = async(req, reply) => {
+export const getBoardByIdHandler = async(req:BoardReq, reply:FastifyReply):Promise<void> => {
   const { boardId } = req.params;
   const board = await getBoardById(boardId);
   if(!board) {
@@ -14,7 +16,7 @@ export const getBoardByIdHandler = async(req, reply) => {
   reply.code(200).send(board);
 }
 
-export const createBoardHandler = async(req, reply) => {
+export const createBoardHandler = async(req:BoardReqBody, reply:FastifyReply):Promise<void> => {
   const board = req.body;
   const newBoard = await createBoard(board);
   if(!newBoard) {
@@ -23,7 +25,7 @@ export const createBoardHandler = async(req, reply) => {
   reply.code(201).send(newBoard);
 }
 
-export const updateBoardByIdHandler = async(req, reply) => {
+export const updateBoardByIdHandler = async(req:BoardReq, reply:FastifyReply):Promise<void> => {
   const board = req.body;
   const { boardId } = req.params;
   const updatedBoard = await updateBoardById(board,boardId);
@@ -33,7 +35,7 @@ export const updateBoardByIdHandler = async(req, reply) => {
   reply.code(200).send(updatedBoard);
 }
 
-export const deleteBoardByIdHandler = async(req, reply) => {
+export const deleteBoardByIdHandler = async(req:BoardReqParams, reply:FastifyReply):Promise<void> => {
   const { boardId } = req.params;
   const isDeleted = await deleteBoardById(boardId);
   if(!isDeleted) {
