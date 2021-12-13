@@ -23,10 +23,10 @@ export const updateUserById = async(user:User, id :string):Promise<User | undefi
   return updatedUser;
 }
 
-export const deleteUserById = async(id :string):Promise<User | boolean> => {
+export const deleteUserById = async(id :string):Promise<User | undefined> => {
   const index = userStore.findIndex(user => user.id === id);
   if (index === -1) {
-    return false;
+    return undefined;
   }
   userIdToNull(taskStore,id);
   return userStore.splice(index, 1)[0];

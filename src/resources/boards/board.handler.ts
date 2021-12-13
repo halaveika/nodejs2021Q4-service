@@ -1,8 +1,9 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
 import {getAllBoards, getBoardById, createBoard, updateBoardById, deleteBoardById} from './board.memory.repository';
 import {BoardReq,BoardReqParams,BoardReqBody} from '../../types/Board.request.type';
+import { Board } from '../../types/Board.type';
 
-export const getAllBoardsHandler = async(req:FastifyRequest, reply:FastifyReply):Promise<void> => {
+export const getAllBoardsHandler = async(_req:FastifyRequest, reply:FastifyReply):Promise<void> => {
   const boards = await getAllBoards();
   reply.code(200).send(boards);
 }
@@ -28,7 +29,7 @@ export const createBoardHandler = async(req:BoardReqBody, reply:FastifyReply):Pr
 export const updateBoardByIdHandler = async(req:BoardReq, reply:FastifyReply):Promise<void> => {
   const board = req.body;
   const { boardId } = req.params;
-  const updatedBoard = await updateBoardById(board,boardId);
+  const updatedBoard:Board | undefined = await updateBoardById(board,boardId);
   if(!updatedBoard) {
     reply.code(400).send();
   }

@@ -2,7 +2,7 @@ import { FastifyReply, FastifyRequest } from 'fastify';
 import {getAllUsers, getUserById, createUser, updateUserById, deleteUserById}from './user.memory.repository';
 import {UserReq, UserReqParams, UserReqBody} from '../../types/User.request.type';
 
-export const getAllUsersHandler = async(req:FastifyRequest, reply:FastifyReply):Promise<void> => {
+export const getAllUsersHandler = async(_req:FastifyRequest, reply:FastifyReply):Promise<void> => {
   const users = await getAllUsers();
   reply.code(200).send(users);
 }

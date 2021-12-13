@@ -23,11 +23,11 @@ export const updateTaskById = async(task:Task, boardId:string, taskId:string):Pr
   return updatedTask;
 }
 
-export const deleteTaskById = async(boardId:string, taskId:string):Promise<Task | boolean> => {
+export const deleteTaskById = async(boardId:string, taskId:string):Promise<Task | undefined> => {
   const index = taskStore.findIndex(task => task.id === taskId && task.boardId === boardId );
   if (index === -1) {
-    return false;
-  }
+    return undefined;
+  } 
   return taskStore.splice(index, 1)[0];
 }
 
