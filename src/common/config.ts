@@ -1,5 +1,7 @@
 import dotenv from 'dotenv';
-import IConfig from '../interfaces/IConfig'
+import IConfig from '../interfaces/IConfig';
+import IEnvironmentVars from '../interfaces/IEnvironmentVars';
+declare const env: IEnvironmentVars;
 
 dotenv.config();
 
