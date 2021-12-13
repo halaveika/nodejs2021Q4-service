@@ -23,10 +23,10 @@ export const updateBoardById = async(board:Board, id:string):Promise<Board | und
   return updatedBoard;
 }
 
-export const deleteBoardById = async(id:string):Promise<Board | boolean> => {
+export const deleteBoardById = async(id:string):Promise<Board | undefined> => {
   const indexDeletedBoard = boardStore.findIndex(board => board.id === id);
   if (indexDeletedBoard === -1) {
-    return false;
+    return undefined;
   }
   deletTasksWithBoard(taskStore,id)
   return boardStore.splice(indexDeletedBoard, 1)[0];
