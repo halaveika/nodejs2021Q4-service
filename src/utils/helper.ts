@@ -2,7 +2,7 @@ import  {Task}  from "../types/Task.type";
 
 export const deletTasksWithBoard = (taskStore:Task[],id:string):void => {
   for (let i = taskStore.length - 1; i >= 0; i -= 1) {
-    if (taskStore[i].boardId === id) {
+    if (taskStore![i].boardId === id) {
       taskStore.splice(i, 1);
     }
   }
