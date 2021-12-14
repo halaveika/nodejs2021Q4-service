@@ -6,7 +6,8 @@
     "jest": true,
     "node": true
   },
-  "plugins": ["@typescript-eslint","import"],
+  "plugins": ["@typescript-eslint/eslint-plugin",
+    "eslint-plugin-tsdoc","import"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "moduleResolution": "node",
@@ -52,6 +53,7 @@
     "tryExtensions": [".js", ".json", ".node",".ts"]
 }],
   "import/no-unresolved": "error",
-  "@typescript-eslint/no-explicit-any": "error"
+  "@typescript-eslint/no-explicit-any": "error",
+  "tsdoc/syntax": "warn"
   }
 }

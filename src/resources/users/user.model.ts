@@ -1,6 +1,6 @@
 export const responseUserSchema = {
   type: 'object',
-  required: ['id','name','login'],
+  required: ['name'],
   properties: {
     id: { type: 'string'},
     name: { type: 'string' },
@@ -10,7 +10,6 @@ export const responseUserSchema = {
 
 export const requestUserSchema = {
   type: 'object',
-  required: ['name','login','password'],
   properties: {
     id: { type: 'string'},
     name: { type: 'string' },

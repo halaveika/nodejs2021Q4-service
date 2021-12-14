@@ -1,5 +1,6 @@
 export const Column = {
   type: 'object',
+  required: ['title','order'],
   properties: {
     id: { type: 'string' },
     title: { type: 'string' },
@@ -9,7 +10,6 @@ export const Column = {
 
 export const requestBoardSchema = {
   type: 'object',
-  required: ['title','columns'],
   properties: {
     title: { type: 'string' },
     columns:{
