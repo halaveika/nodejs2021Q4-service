@@ -2,7 +2,7 @@ import { FastifyInstance } from 'fastify';
 import { getBoards, getBoard, postBoard, putBoard, deleteBoard } from './board.service';
 
 /**
- * handle endpoints for boardRouter
+ * Handle endpoints for boardRouter
  * @param app - instance of fastify from fastify package
  */
 const boardRouter = async(app:FastifyInstance):Promise<void> =>{

@@ -1,7 +1,8 @@
-import * as dotenv from 'dotenv';
-
-dotenv.config();
-
-export function env(key: string, defaultValue: null | string = null): string {
-  return process.env[key] ?? (defaultValue as string);
+/**
+ * Returns value of process evnironment variable as string
+ * @param key - key of process evnironment variable
+ * @returns value of process evnironment variable as string
+ */
+export function env(key: string): string {
+  return process.env[key] as string ;
 }

@@ -5,7 +5,7 @@ import { Board } from '../../types/Board.type';
 
 
 /**
- * Send response  with statuscode 200 and body with array of all Boards to the client
+ * Get all boards from board.repository, then send response  with statuscode 200 and body with array of all Boards to the client
  * @param _req - request object
  * @param reply - response object
  */
@@ -15,7 +15,7 @@ export const getAllBoardsHandler = async(_req:FastifyRequest, reply:FastifyReply
 }
 
 /**
- * Get all boards from board.repository, then send response  with statuscode 200 and body with Board of current boardId or send response with 404 error to the client
+ * Get board by is from board.repository, then send response  with statuscode 200 and body with Board of current boardId or send response with 404 error to the client
  * @param req - request object with params boardId
  * @param reply - response object
  */
@@ -29,7 +29,7 @@ export const getBoardByIdHandler = async(req:BoardReq, reply:FastifyReply):Promi
 }
 
 /**
- * Create new board in board.repository from body in request, then send response  with statuscode 200 and body with created Board of current boardId or send response with 400 error to the client
+ * Create new board in board.repository from body in request, then send response  with statuscode 201 and body with created Board or send response with 400 error to the client
  * @param req - request object with body board.type
  * @param reply - response object
  */
