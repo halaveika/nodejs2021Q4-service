@@ -9,5 +9,5 @@ export const config:IConfig = {
   NODE_ENV: env('NODE_ENV'),
   MONGO_CONNECTION_STRING: env('MONGO_CONNECTION_STRING'),
   JWT_SECRET_KEY: env('JWT_SECRET_KEY'),
-  AUTH_MODE: env('AUTH_MODE') === 'true'
+  AUTH_MODE: Boolean(env('AUTH_MODE') === 'true')
 }
