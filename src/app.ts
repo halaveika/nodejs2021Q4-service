@@ -4,8 +4,9 @@ import fastifySwagger from 'fastify-swagger';
 import boardRouter from './resources/boards/board.router';
 import userRouter from './resources/users/user.router';
 import taskRouter from './resources/tasks/task.router';
+import logger from './common/logger';
 
-const app: FastifyInstance = fastify()
+const app: FastifyInstance = fastify({logger})
 app.register(fastifySwagger,
 {
   mode: 'static',
