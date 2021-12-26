@@ -1,17 +1,14 @@
 import {Logger, pino} from 'pino';
 import * as path from 'path';
+import { FastifyReply, FastifyRequest } from 'fastify';
 import {LOG_FILE_ALL, LOG_FILE_ERROR} from '../constants';
 import {config} from './config';
-import { FastifyReply, FastifyRequest } from 'fastify';
 import {BoardReq,BoardReqParams,BoardReqBody} from '../types/Board.request.type';
 import {TaskReqBodyParams, TaskReqParams, TaskReqBodyParam, TaskReqParam} from '../types/Task.request.type';
 import {UserReq, UserReqParams, UserReqBody} from '../types/User.request.type';
 
 type CustomRequest = BoardReq | BoardReqParams | BoardReqBody | TaskReqBodyParams | TaskReqParams | TaskReqBodyParam
 | TaskReqParam | UserReq | UserReqParams | UserReqBody
-
-const transport:pino.TransportTargetOptions[] = []
-
 
 const logger:Logger = pino({
   transport:{
