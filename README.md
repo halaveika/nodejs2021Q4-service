@@ -74,8 +74,8 @@ For more information, visit: https://code.visualstudio.com/docs/editor/debugging
 
 ### Logger CLI;
 
-npm run dev <argument>
-Set this argument to the desired logging level.
+"npm run dev <kbd>argument<kbd>" or "npm run start <kbd>argument<kbd>"
+Set this argument(number) to the desired logging level.
 In order of priority, available levels are:
 
 0. 'fatal'
@@ -89,5 +89,5 @@ Example: logger.level = 'info'
 The logging level is a minimum level. For instance if logger.level is 'info' then all 'fatal', 'error', 'warn', and 'info' logs will be enabled.
 
 You can pass 'silent' to disable logging:
-npm run dev <argument>
+"npm run dev <kbd>argument<kbd>" or "npm run start <kbd>argument<kbd>"
 where argument > 5 or without argument
