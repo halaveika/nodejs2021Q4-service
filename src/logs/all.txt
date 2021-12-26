@@ -1,0 +1,6 @@
+{"level":40,"time":1640466993337,"pid":54427,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"\"root\" path \"/doc\" must exist"}
+{"level":30,"time":1640466993452,"pid":54427,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"Server listening at http://127.0.0.1:4000"}
+{"level":40,"time":1640467116947,"pid":54614,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"\"root\" path \"/doc\" must exist"}
+{"level":30,"time":1640467117066,"pid":54614,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"Server listening at http://127.0.0.1:4000"}
+{"level":40,"time":1640467132092,"pid":54749,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"\"root\" path \"/doc\" must exist"}
+{"level":30,"time":1640467132225,"pid":54749,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"Server listening at http://127.0.0.1:4000"}
