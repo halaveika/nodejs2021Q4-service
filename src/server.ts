@@ -16,3 +16,13 @@ const start = async () => {
   }
 }
 start();
+
+process.on("unhandledRejection", (reason:unknown, promise:Promise<unknown>): void => {
+  logger.fatal("Unexpected exception occured", { reason, ex: promise });
+  process.exit(1);
+})
+
+process.on("uncaughtException", error => {
+  logger.fatal(error.message);
+  process.exit(1);
+});

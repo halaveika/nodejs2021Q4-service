@@ -1,0 +1,11 @@
+{"level":60,"time":1640545360089,"pid":542401,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"Oops!"}
+{"level":60,"time":1640545390148,"pid":542501,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"Unexpected exception occured"}
+{"level":60,"time":1640545868247,"pid":545346,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"Unexpected exception occured"}
+{"level":60,"time":1640545912382,"pid":545566,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"Unexpected exception occured"}
+{"level":60,"time":1640545934178,"pid":545770,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"Unexpected exception occured"}
+{"level":60,"time":1640546043860,"pid":546451,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"Unexpected exception occured"}
+{"level":60,"time":1640546133765,"pid":547010,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"Unexpected exception occured"}
+{"level":60,"time":1640546149975,"pid":547193,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"Unexpected exception occured"}
+{"level":60,"time":1640546216090,"pid":547677,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"Unexpected exception occured"}
+{"level":60,"time":1640546234038,"pid":547836,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"Unexpected exception occured"}
+{"level":60,"time":1640546818013,"pid":552855,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"Unexpected exception occured"}
