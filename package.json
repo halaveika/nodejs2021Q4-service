@@ -23,9 +23,6 @@
     "rest-api"
   ],
   "license": "ISC",
-  "engines": {
-    "node": ">=16.0.0 <17"
-  },
   "jest": {
     "testEnvironment": "node",
     "setupFilesAfterEnv": [
