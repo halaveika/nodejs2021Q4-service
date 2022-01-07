@@ -2622,3 +2622,10 @@
 {"level":30,"time":1640551993478,"pid":577437,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","reqId":"req-1u","res":{"statusCode":200,"body":null},"responseTime":0.9958800002932549,"msg":"request completed"}
 {"level":30,"time":1640551993481,"pid":577437,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","reqId":"req-1v","req":{"method":"DELETE","url":"/boards/9810db0d-bf16-47ba-beec-d92bd3f96038","path":"/boards/:boardId","parameters":{"boardId":"9810db0d-bf16-47ba-beec-d92bd3f96038"},"query_parameters":{},"body":null,"headers":{"host":"localhost:4000","accept-encoding":"gzip, deflate","connection":"close"}},"msg":"incoming request"}
 {"level":30,"time":1640551993481,"pid":577437,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","reqId":"req-1v","res":{"statusCode":204,"body":null},"responseTime":0.46151699870824814,"msg":"request completed"}
+{"level":40,"time":1641584143854,"pid":37429,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"\"root\" path \"/doc\" must exist"}
+{"level":30,"time":1641584143967,"pid":37429,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"Server listening at http://127.0.0.1:4000"}
+{"level":30,"time":1641584143967,"pid":37429,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"App is running on http://localhost: 4000 and logger level: trace"}
+{"level":40,"time":1641584319128,"pid":39626,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"\"root\" path \"/doc\" must exist"}
+{"level":40,"time":1641584376700,"pid":39843,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"\"root\" path \"/doc\" must exist"}
+{"level":30,"time":1641584376836,"pid":39843,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"Server listening at http://127.0.0.1:4000"}
+{"level":30,"time":1641584376836,"pid":39843,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"App is running on http://localhost: 4000 and logger level: trace"}
