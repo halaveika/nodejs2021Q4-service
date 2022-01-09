@@ -1,7 +1,9 @@
 version: "3.8"
 services: 
   postgres:
-    image: postgres:alpine
+    build:
+      context: .
+      dockerfile: docker/db.Dockerfile
     container_name: "postgres"
     environment: 
       - PG_DATA=/var/lib/postresql/data
@@ -9,16 +11,18 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     ports:
-      - "5432:5432"
+      - ${DATABASE_PORT}:${DATABASE_PORT}
     volumes:
       - ./data/db:/var/lib/postgresql/data
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: docker/app.Dockerfile
     container_name: "app"
     depends_on:
       - postgres
     ports: 
-      - "4000:4000"
+      - ${PORT}:${PORT}
     volumes:
-      - ./src:/app/src
+      - ./src:/usr/src/app/src
     restart: always
