@@ -1,6 +1,6 @@
-FROM node:alpine
+FROM node:erbium-alpine3.15
 
-RUN apk --no-cache add ca-certificates
+RUN apk add --no-cache bash
 
 EXPOSE 4000
 
@@ -8,7 +8,8 @@ WORKDIR /usr/src/app
 
 COPY package.json package-lock.json ./
 
-RUN npm install
+RUN npm ci
 
 COPY . .
+
 CMD [ "npm","run","dev"]

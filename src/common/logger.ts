@@ -10,6 +10,7 @@ import {UserReq, UserReqParams, UserReqBody} from '../types/User.request.type';
 type CustomRequest = BoardReq | BoardReqParams | BoardReqBody | TaskReqBodyParams | TaskReqParams | TaskReqBodyParam
 | TaskReqParam | UserReq | UserReqParams | UserReqBody
 
+
 const logger:Logger = pino({
   transport:{
     targets: [{

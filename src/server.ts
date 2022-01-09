@@ -8,7 +8,7 @@ import logger from './common/logger';
 const start = async () => {
   try {
     await app.listen(config.PORT, config.BACKEND_HOST, () =>
-    logger.info(`App is running on ${config.BACKEND_HOST}: ${config.PORT} and logger level: ${config.LOG_LEVEL}`)
+    logger.info(`App is running on ${config.BACKEND_HOST}: ${config.PORT} and logger level: ${config.LOG_LEVEL} in ${config.NODE_ENV} mode`)
   )
   } catch (error) {
     logger.error(error)

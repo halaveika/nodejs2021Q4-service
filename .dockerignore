@@ -6,3 +6,4 @@ docker
 .gitignore
 .vscode
 README.md
+logs

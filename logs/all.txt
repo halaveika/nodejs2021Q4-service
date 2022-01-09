@@ -1,0 +1,45 @@
+{"level":40,"time":1641746381386,"pid":67559,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"\"root\" path \"/doc\" must exist"}
+{"level":30,"time":1641746381489,"pid":67559,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"Server listening at http://0.0.0.0:4000"}
+{"level":30,"time":1641746381490,"pid":67559,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"App is running on 0.0.0.0: 4000 and logger level: trace in\n    development mode"}
+{"level":40,"time":1641746496417,"pid":68291,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"\"root\" path \"/doc\" must exist"}
+{"level":30,"time":1641746496536,"pid":68291,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"Server listening at http://0.0.0.0:4000"}
+{"level":30,"time":1641746496536,"pid":68291,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"App is running on 0.0.0.0: 4000 and logger level: trace in development mode"}
+{"level":40,"time":1641746699467,"pid":68855,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"\"root\" path \"/doc\" must exist"}
+{"level":30,"time":1641746699577,"pid":68855,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"Server listening at http://0.0.0.0:4000"}
+{"level":30,"time":1641746699577,"pid":68855,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"App is running on 0.0.0.0: 4000 and logger level: trace in undefined mode"}
+{"level":40,"time":1641746735050,"pid":69031,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"\"root\" path \"/doc\" must exist"}
+{"level":30,"time":1641746735157,"pid":69031,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"Server listening at http://0.0.0.0:4000"}
+{"level":30,"time":1641746735157,"pid":69031,"hostname":"halaveika-HP-Pavilion-17-Notebook-PC","msg":"App is running on 0.0.0.0: 4000 and logger level: trace in development mode"}
+{"level":40,"time":1641750154418,"pid":40,"hostname":"520b57fac49b","msg":"\"root\" path \"/doc\" must exist"}
+{"level":30,"time":1641750154547,"pid":40,"hostname":"520b57fac49b","msg":"Server listening at http://0.0.0.0:4000"}
+{"level":30,"time":1641750154547,"pid":40,"hostname":"520b57fac49b","msg":"App is running on 0.0.0.0: 4000 and logger level: trace in development mode"}
+{"level":40,"time":1641750394920,"pid":38,"hostname":"79259690e489","msg":"\"root\" path \"/doc\" must exist"}
+{"level":30,"time":1641750395062,"pid":38,"hostname":"79259690e489","msg":"Server listening at http://0.0.0.0:4000"}
+{"level":30,"time":1641750395062,"pid":38,"hostname":"79259690e489","msg":"App is running on 0.0.0.0: 4000 and logger level: trace in development mode"}
+{"level":40,"time":1641750588822,"pid":37,"hostname":"862e46ce13da","msg":"\"root\" path \"/doc\" must exist"}
+{"level":30,"time":1641750588957,"pid":37,"hostname":"862e46ce13da","msg":"Server listening at http://0.0.0.0:4000"}
+{"level":30,"time":1641750588957,"pid":37,"hostname":"862e46ce13da","msg":"App is running on 0.0.0.0: 4000 and logger level: trace in development mode"}
+{"level":40,"time":1641751070429,"pid":38,"hostname":"9239062c4246","msg":"\"root\" path \"/doc\" must exist"}
+{"level":30,"time":1641751070555,"pid":38,"hostname":"9239062c4246","msg":"Server listening at http://0.0.0.0:4000"}
+{"level":30,"time":1641751070555,"pid":38,"hostname":"9239062c4246","msg":"App is running on 0.0.0.0: 4000 and logger level: trace in development mode"}
+{"level":40,"time":1641751225330,"pid":38,"hostname":"736b4fed6e02","msg":"\"root\" path \"/doc\" must exist"}
+{"level":30,"time":1641751225486,"pid":38,"hostname":"736b4fed6e02","msg":"Server listening at http://0.0.0.0:4000"}
+{"level":30,"time":1641751225486,"pid":38,"hostname":"736b4fed6e02","msg":"App is running on 0.0.0.0: 4000 and logger level: trace in development mode"}
+{"level":40,"time":1641751336598,"pid":37,"hostname":"7366e7a369a8","msg":"\"root\" path \"/doc\" must exist"}
+{"level":30,"time":1641751336731,"pid":37,"hostname":"7366e7a369a8","msg":"Server listening at http://0.0.0.0:4000"}
+{"level":30,"time":1641751336731,"pid":37,"hostname":"7366e7a369a8","msg":"App is running on 0.0.0.0: 4000 and logger level: trace in development mode"}
+{"level":40,"time":1641751508941,"pid":39,"hostname":"7eae45a02e0e","msg":"\"root\" path \"/doc\" must exist"}
+{"level":30,"time":1641751509082,"pid":39,"hostname":"7eae45a02e0e","msg":"Server listening at http://0.0.0.0:4000"}
+{"level":30,"time":1641751509082,"pid":39,"hostname":"7eae45a02e0e","msg":"App is running on 0.0.0.0: 4000 and logger level: trace in development mode"}
+{"level":40,"time":1641751611876,"pid":37,"hostname":"f73d0bc9f6f5","msg":"\"root\" path \"/doc\" must exist"}
+{"level":30,"time":1641751612014,"pid":37,"hostname":"f73d0bc9f6f5","msg":"Server listening at http://0.0.0.0:4000"}
+{"level":30,"time":1641751612014,"pid":37,"hostname":"f73d0bc9f6f5","msg":"App is running on 0.0.0.0: 4000 and logger level: trace in development mode"}
+{"level":40,"time":1641751682036,"pid":38,"hostname":"512716f49253","msg":"\"root\" path \"/doc\" must exist"}
+{"level":30,"time":1641751682186,"pid":38,"hostname":"512716f49253","msg":"Server listening at http://0.0.0.0:4000"}
+{"level":30,"time":1641751682186,"pid":38,"hostname":"512716f49253","msg":"App is running on 0.0.0.0: 4000 and logger level: trace in development mode"}
+{"level":40,"time":1641752031211,"pid":18,"hostname":"6a7cf04d30f5","msg":"\"root\" path \"/doc\" must exist"}
+{"level":30,"time":1641752031370,"pid":18,"hostname":"6a7cf04d30f5","msg":"Server listening at http://0.0.0.0:4000"}
+{"level":30,"time":1641752031370,"pid":18,"hostname":"6a7cf04d30f5","msg":"App is running on 0.0.0.0: 4000 and logger level: trace in development mode"}
+{"level":40,"time":1641753160042,"pid":38,"hostname":"a15e58428eb7","msg":"\"root\" path \"/doc\" must exist"}
+{"level":30,"time":1641753160172,"pid":38,"hostname":"a15e58428eb7","msg":"Server listening at http://0.0.0.0:4000"}
+{"level":30,"time":1641753160172,"pid":38,"hostname":"a15e58428eb7","msg":"App is running on 0.0.0.0: 4000 and logger level: trace in development mode"}

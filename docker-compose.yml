@@ -5,11 +5,8 @@ services:
       context: .
       dockerfile: docker/db.Dockerfile
     container_name: "postgres"
-    environment: 
-      - PG_DATA=/var/lib/postresql/data
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+    env_file:
+      - .env
     ports:
       - ${DATABASE_PORT}:${DATABASE_PORT}
     volumes:
@@ -25,4 +22,7 @@ services:
       - ${PORT}:${PORT}
     volumes:
       - ./src:/usr/src/app/src
+      - ./logs:/usr/src/app/logs
     restart: always
+    env_file:
+      - .env
