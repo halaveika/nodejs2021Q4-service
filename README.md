@@ -27,6 +27,24 @@ After starting the app on port (4000 as default) you can open
 in your browser OpenAPI documentation by typing http://localhost:4000/doc/.
 For more information about OpenAPI/Swagger please visit https://swagger.io/.
 
+## Running application in Docker
+
+docker-compose up --build
+
+You should wait while the containers -app and -postgres run in development mode;
+
+docker exec -i -t app /bin/bash
+
+You can get into -app container with this command
+
+docker stop app postgres
+
+This command stop -app and -postgres containers
+
+docker rm app postgres
+
+This command delete -app and -postgres containers
+
 ## Testing
 
 After application running open new terminal and enter:
