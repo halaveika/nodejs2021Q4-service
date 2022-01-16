@@ -36,3 +36,5 @@ process.on("uncaughtException", error => {
   logger.fatal(error.message);
   process.exit(1);
 });
+
+export default connection;

@@ -1,9 +1,8 @@
 import { Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BaseEntity, ManyToMany } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
-import { Board } from "./board";
 
 @Entity("users")
-export class User extends BaseEntity {
+export class UserEntity extends BaseEntity {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 

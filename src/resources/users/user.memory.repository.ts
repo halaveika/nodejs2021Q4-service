@@ -46,15 +46,15 @@ export const updateUserById = async(user:User, id :string):Promise<User | undefi
 /**
  * Returns deleted User by id & change userId of deleted User's tasks to null
  * @param id - id of User
- * @returns Promise of User or undefined
+ * @returns Promise of boolean
  */
-export const deleteUserById = async(id :string):Promise<User | undefined> => {
+export const deleteUserById = async(id :string):Promise<boolean> => {
   const index = userStore.findIndex(user => user.id === id);
   if (index === -1) {
-    return undefined;
+    return false;
   }
   userIdToNull(taskStore,id);
-  return userStore.splice(index, 1)[0];
+  return true;
 }
 
 
