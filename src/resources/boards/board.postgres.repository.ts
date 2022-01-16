@@ -1,6 +1,4 @@
 import { v4 as uuidv4 } from 'uuid';
-import {taskStore, boardStore}from '../../db/store';
-import {deletTasksWithBoard} from '../../utils/helper';
 import { Board } from '../../types/Board.type';
 import {BoardEntity} from '../../db/entity/board';
 import {TaskEntity} from '../../db/entity/task';

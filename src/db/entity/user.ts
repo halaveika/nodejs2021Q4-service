@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BaseEntity, ManyToMany } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BaseEntity } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 
 @Entity("users")
@@ -13,7 +13,7 @@ export class UserEntity extends BaseEntity {
   login!: string;
 
   @Column({ type: "varchar", length: 255 })
-  password!: string;
+  password?: string;
 
   @BeforeInsert()
   async addId(): Promise<void> {

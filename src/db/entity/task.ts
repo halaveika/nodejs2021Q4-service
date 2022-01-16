@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BaseEntity, ManyToMany,OneToOne,JoinColumn} from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BaseEntity, ManyToOne} from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 import { UserEntity } from "./user";
 import { BoardEntity } from "./board";
@@ -15,17 +15,22 @@ export class TaskEntity extends BaseEntity {
   order!: number | null;
 
   @Column({type: "varchar",length: 255, nullable: true})
-  description!: string | null;
-
-  @OneToOne(type => UserEntity, user => user.id) @JoinColumn() 
-  userId!: string | null;
-
-  @OneToOne(type => BoardEntity, board => board.id) @JoinColumn() 
-  boardId!: string;
+  description?: string | null;
 
   @Column({ type: "uuid", nullable: true})
-  columnId!: string  | null;
+  userId?: string  | null;
 
+  @Column({ type: "uuid", nullable: true})
+  boardId?: string  | null;
+
+  @Column({ type: "uuid", nullable: true})
+  columnId?: string  | null;
+
+  @ManyToOne(type => UserEntity, user => user.id)
+  user?: UserEntity;
+
+  @ManyToOne(type => BoardEntity, board => board.id)
+  board?: BoardEntity;
 
   @BeforeInsert()
   async addId(): Promise<void> {

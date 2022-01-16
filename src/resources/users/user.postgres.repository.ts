@@ -25,9 +25,8 @@ export const getUserById = async(id:string):Promise<User | undefined> => getUser
  * @param user - User object for creating User in store
  * @returns Promise of User
  */
-export const createUser = async(user:User):Promise<User> => {
-  return getUserRepository().then(userRepository => userRepository.save({ id: uuidv4(), ...user}))
-}
+export const createUser = async(user:User):Promise<User> => 
+getUserRepository().then(userRepository => userRepository.save({ id: uuidv4(), ...user}));
 
 /**
  * Returns updated User by id

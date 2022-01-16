@@ -11,12 +11,11 @@ export class BoardEntity extends BaseEntity {
   @Column({ type: "varchar", length: 255})
   title!: string;
 
+  @Column({ type:'jsonb', nullable: true})
+  columns!:  column[]
+
   @BeforeInsert()
   async addId(): Promise<void> {
     this.id = uuidv4();
   }
-
-  @ManyToMany(() => TaskEntity, task => {return {id:task.columnId,title:task.title,order: task.order}}, { cascade: true })
-  @JoinTable({ name: "columns" })
-  columns!: column[];
 }

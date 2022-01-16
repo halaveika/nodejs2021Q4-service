@@ -2,13 +2,17 @@
 import { v4 as uuidv4 } from 'uuid';
 import {taskStore} from '../../db/store';
 import { Task } from '../../types/Task.type';
+import {TaskEntity} from '../../db/entity/task';
+import connection from '../../server';
 
+
+const getTaskRepository = async() => await connection.then(c => c.getRepository(TaskEntity));
 /**
  * Returns array of Tasks on current Board
  * @param boardId - id of Board
  * @returns Promise of array of Tasks
  */
-export const getAllTasks = async(boardId:string):Promise<Task[]> => taskStore.filter(task => task.boardId === boardId);
+export const getAllTasks = async(boardId:string):Promise<Task[]> => getTaskRepository().then(taskRepository => taskRepository.find({boardId}) as Promise<Task[]>);
 
 /**
  * Returns Task by boardId & taskId
@@ -16,7 +20,8 @@ export const getAllTasks = async(boardId:string):Promise<Task[]> => taskStore.fi
  * @param taskId - id of Task
  * @returns Promise of Tasks or undefined
  */
-export const getTaskById = async(boardId:string, taskId:string):Promise<Task | undefined> => taskStore.find(task => task.id === taskId && task.boardId === boardId)
+export const getTaskById = async(boardId:string, taskId:string):Promise<Task | undefined> =>
+getTaskRepository().then(taskRepository => taskRepository.findOne({boardId, id:taskId}) as Promise<Task | undefined> );
 
 /**
  * Returns new created Task
@@ -24,11 +29,8 @@ export const getTaskById = async(boardId:string, taskId:string):Promise<Task | u
  * @param boardId - id of Board
  * @returns Promise of Task
  */
-export const createTask = async(task:Task, boardId:string):Promise<Task> => {
-  const newTask = {...task,id: uuidv4(), boardId};
-  taskStore.push(newTask);
-  return newTask;
-}
+export const createTask = async(task:Task, boardId:string):Promise<Task> =>
+  getTaskRepository().then(taskRepository => taskRepository.save({...task,id: uuidv4(), boardId}));
 
 /**
  * Returns updated Task by boardId & taskId
@@ -38,13 +40,13 @@ export const createTask = async(task:Task, boardId:string):Promise<Task> => {
  * @returns Promise of Task or undefined
  */
 export const updateTaskById = async(task:Task, boardId:string, taskId:string):Promise<Task | undefined> => {
+  const taskRepository = await getTaskRepository();
+  const updatedTask  = taskRepository.findOne({ id: taskId, boardId });
   const index = taskStore.findIndex(item => item.id === taskId && item.boardId === boardId);
-  let updatedTask : Task | undefined ;
-  if (index !== -1) {
-    updatedTask = { ...taskStore[index], ...task };
-    taskStore.splice(index, 1, updatedTask);
+  if (!updatedTask) {
+    return;
   }
-  return updatedTask;
+  return await taskRepository.save({ updatedTask, ...task });
 }
 
 /**
@@ -54,12 +56,7 @@ export const updateTaskById = async(task:Task, boardId:string, taskId:string):Pr
  * @returns Promise boolean
  */
 export const deleteTaskById = async(boardId:string, taskId:string):Promise<boolean> => {
-  const index = taskStore.findIndex(task => task.id === taskId && task.boardId === boardId );
-  if (index === -1) {
-    return false;
-  } 
-  return true;
+ return (await getTaskRepository().then(taskRepository =>
+    taskRepository.delete({ id:taskId, boardId}))).affected ? true : false;
 }
-
-
 
