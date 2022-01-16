@@ -1,5 +1,8 @@
 import { ConnectionOptions } from "typeorm";
 import dotenv from "dotenv";
+import {Board} from '../db/entity/board';
+import {Task} from '../db/entity/task';
+import {User} from '../db/entity/user';
 
 dotenv.config();
 
@@ -13,7 +16,7 @@ export const dbConfig: ConnectionOptions = {
   synchronize: Boolean(process.env.TYPEORM_SYNCHRONIZE),
   migrationsRun: true,
   logging: false,
-  entities: [],
+  entities: [Board,Task,User],
   extra: {
     ssl: {
       require: process.env.TYPEORM_SSL === "true" ? true : false,

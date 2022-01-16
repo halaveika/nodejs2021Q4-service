@@ -1,5 +1,5 @@
 module.exports = {
-  "name": "nodejs2021q4-service",
+  "name": "default",
    "type": "postgres",
    "host": process.env.TYPEORM_HOST,
    "port": Number(process.env.TYPEORM_PORT),
