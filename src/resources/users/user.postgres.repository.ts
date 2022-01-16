@@ -50,7 +50,7 @@ export const updateUserById = async(user:User, id :string):Promise<User | undefi
  */
 export const deleteUserById = async(id :string):Promise<boolean> => {
   const userIsDeleted = (await getUserRepository().then(userRepository =>
-     userRepository.delete({ id}))).affected ? true : false;
+     userRepository.delete({id}))).affected ? true : false;
   if (userIsDeleted) {
     await userIdToNullPostgres(id);
   }
@@ -60,8 +60,8 @@ export const deleteUserById = async(id :string):Promise<boolean> => {
 
 async function userIdToNullPostgres(id:string):Promise<void>  {
   const taskRepository = await getTaskRepository();
-  const tasks = await taskRepository.find({id});
-  tasks.forEach(task => taskRepository.save({...task, userId: null}))
+  const tasks = await taskRepository.find({userId:id});
+  tasks.forEach(async(task) => taskRepository.save({...task, userId: null}))
 }
 
 

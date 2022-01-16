@@ -21,7 +21,7 @@ export const getAllTasks = async(boardId:string):Promise<Task[]> => getTaskRepos
  * @returns Promise of Tasks or undefined
  */
 export const getTaskById = async(boardId:string, taskId:string):Promise<Task | undefined> =>
-getTaskRepository().then(taskRepository => taskRepository.findOne({boardId, id:taskId}) as Promise<Task | undefined> );
+getTaskRepository().then(taskRepository => taskRepository.findOne({ boardId, id:taskId}) as Promise<Task | undefined>);
 
 /**
  * Returns new created Task

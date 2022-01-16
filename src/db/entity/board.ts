@@ -11,7 +11,12 @@ export class BoardEntity extends BaseEntity {
   @Column({ type: "varchar", length: 255})
   title!: string;
 
-  @Column({ type:'jsonb', nullable: true})
+  @Column({
+    type: 'jsonb',
+    array: false,
+    default: () => "'[]'",
+    nullable: false,
+})
   columns!:  column[]
 
   @BeforeInsert()

@@ -26,10 +26,10 @@ export class TaskEntity extends BaseEntity {
   @Column({ type: "uuid", nullable: true})
   columnId?: string  | null;
 
-  @ManyToOne(type => UserEntity, user => user.id)
+  @ManyToOne(type => UserEntity, user => user.id,{ onDelete: 'CASCADE' })
   user?: UserEntity;
 
-  @ManyToOne(type => BoardEntity, board => board.id)
+  @ManyToOne(type => BoardEntity, board => board.id,{ onDelete: 'CASCADE' })
   board?: BoardEntity;
 
   @BeforeInsert()
