@@ -28,7 +28,8 @@ export const getBoardById = async(id:string):Promise<Board | undefined> =>
  * @returns Promise of Board
  */
 export const createBoard = async(board:Board):Promise<Board> => {
-  return getBoardRepository().then(boardRepository => boardRepository.save({...board,id: uuidv4()}))
+  const boardRepository = await getBoardRepository();
+  return await boardRepository.save({...board});
 }
 
 /**
@@ -39,7 +40,7 @@ export const createBoard = async(board:Board):Promise<Board> => {
  */
 export const updateBoardById = async(board:Board, id:string):Promise<Board | undefined> => {
   const boardRepository = await getBoardRepository();
-  const updatedBoard  = boardRepository.findOne({ id });
+  const updatedBoard  = await boardRepository.findOne({ id });
   if (!updatedBoard) {
     return;
   }
@@ -52,18 +53,8 @@ export const updateBoardById = async(board:Board, id:string):Promise<Board | und
  * @returns Promise boolean
  */
 export const deleteBoardById = async(id:string):Promise<boolean> => {
-  const boardIsDeleted = (await getBoardRepository().then(boardRepository =>
-    boardRepository.delete({ id}))).affected ? true : false;
- if (boardIsDeleted) {
-   await deletTasksWithBoardPostgres(id);
- }
+  const boardRepository = await getBoardRepository();
+  const boardIsDeleted = (await boardRepository.delete({ id})).affected ? true : false;
  return boardIsDeleted;
 }
-
-async function deletTasksWithBoardPostgres(id:string):Promise<void>  {
-  const taskRepository = await getTaskRepository();
-  const tasks = await taskRepository.find({id});
-  tasks.forEach(task => taskRepository.delete(task))
-}
-
 

@@ -13,9 +13,7 @@ export class BoardEntity extends BaseEntity {
 
   @Column({
     type: 'jsonb',
-    array: false,
-    default: () => "'[]'",
-    nullable: false,
+    nullable: true,
 })
   columns!:  column[]
 

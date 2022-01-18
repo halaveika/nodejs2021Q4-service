@@ -20,8 +20,11 @@ export const getAllTasks = async(boardId:string):Promise<Task[]> => getTaskRepos
  * @param taskId - id of Task
  * @returns Promise of Tasks or undefined
  */
-export const getTaskById = async(boardId:string, taskId:string):Promise<Task | undefined> =>
-getTaskRepository().then(taskRepository => taskRepository.findOne({ boardId, id:taskId}) as Promise<Task | undefined>);
+export const getTaskById = async(boardId:string, taskId:string):Promise<Task | undefined> =>{
+  const taskRepository =await getTaskRepository();
+  return await taskRepository.findOne({ boardId, id:taskId}) as Task | undefined;
+}
+
 
 /**
  * Returns new created Task
@@ -29,8 +32,11 @@ getTaskRepository().then(taskRepository => taskRepository.findOne({ boardId, id:
  * @param boardId - id of Board
  * @returns Promise of Task
  */
-export const createTask = async(task:Task, boardId:string):Promise<Task> =>
-  getTaskRepository().then(taskRepository => taskRepository.save({...task,id: uuidv4(), boardId}));
+export const createTask = async(task:Task, boardId:string):Promise<Task> => {
+  const taskRepository = await getTaskRepository();
+  return await taskRepository.save({...task,boardId});
+}
+
 
 /**
  * Returns updated Task by boardId & taskId

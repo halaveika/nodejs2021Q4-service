@@ -11,7 +11,7 @@ const getTaskRepository = async() => await connection.then(c => c.getRepository(
  * Returns array of Users
  * @returns Promise of array Users
  */
-export const getAllUsers = async():Promise<User[]> => getUserRepository().then(userRepository => userRepository.find({}));
+export const getAllUsers = async():Promise<User[]> =>getUserRepository().then(userRepository => userRepository.find({}));
 
 /**
  * Returns User by id
@@ -25,8 +25,10 @@ export const getUserById = async(id:string):Promise<User | undefined> => getUser
  * @param user - User object for creating User in store
  * @returns Promise of User
  */
-export const createUser = async(user:User):Promise<User> => 
-getUserRepository().then(userRepository => userRepository.save({ id: uuidv4(), ...user}));
+export const createUser = async(user:User):Promise<User> => {
+  const userRepository = await getUserRepository();
+  return await userRepository.save({...user})
+}
 
 /**
  * Returns updated User by id
@@ -49,20 +51,11 @@ export const updateUserById = async(user:User, id :string):Promise<User | undefi
  * @returns Promise of boolean
  */
 export const deleteUserById = async(id :string):Promise<boolean> => {
-  const userIsDeleted = (await getUserRepository().then(userRepository =>
-     userRepository.delete({id}))).affected ? true : false;
-  if (userIsDeleted) {
-    await userIdToNullPostgres(id);
-  }
+  const userRepository = await getUserRepository();
+  const userIsDeleted = (await userRepository.delete({id})).affected ? true : false;
   return userIsDeleted;
 }
 
-
-async function userIdToNullPostgres(id:string):Promise<void>  {
-  const taskRepository = await getTaskRepository();
-  const tasks = await taskRepository.find({userId:id});
-  tasks.forEach(async(task) => taskRepository.save({...task, userId: null}))
-}
 
 
 

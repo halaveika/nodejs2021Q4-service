@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BaseEntity, ManyToOne} from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BaseEntity, ManyToOne, JoinColumn} from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 import { UserEntity } from "./user";
 import { BoardEntity } from "./board";
@@ -26,10 +26,12 @@ export class TaskEntity extends BaseEntity {
   @Column({ type: "uuid", nullable: true})
   columnId?: string  | null;
 
-  @ManyToOne(type => UserEntity, user => user.id,{ onDelete: 'CASCADE' })
+  @ManyToOne(type => UserEntity, {onDelete: 'SET NULL' })
+  @JoinColumn({ name: 'userId' })
   user?: UserEntity;
 
-  @ManyToOne(type => BoardEntity, board => board.id,{ onDelete: 'CASCADE' })
+  @ManyToOne(type => BoardEntity,{ onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'boardId' })
   board?: BoardEntity;
 
   @BeforeInsert()
