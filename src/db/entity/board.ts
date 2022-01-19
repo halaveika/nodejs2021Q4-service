@@ -1,6 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BaseEntity, ManyToMany, JoinTable } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
-import { TaskEntity } from "./task";
 import { column } from '../../types/Column.type';
 
 @Entity("boards")

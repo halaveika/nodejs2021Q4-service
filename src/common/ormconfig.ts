@@ -1,9 +1,9 @@
 import { ConnectionOptions } from "typeorm";
 import dotenv from "dotenv";
+import * as path from 'path';
 import {BoardEntity} from '../db/entity/board';
 import {TaskEntity} from '../db/entity/task';
 import {UserEntity} from '../db/entity/user';
-import * as path from 'path';
 
 dotenv.config();
 
