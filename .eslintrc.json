@@ -54,6 +54,9 @@
 }],
   "import/no-unresolved": "error",
   "@typescript-eslint/no-explicit-any": "error",
-  "tsdoc/syntax": "warn"
+  "tsdoc/syntax": "warn",
+  "import/no-cycle": "off",
+  "consistent-return": "off",
+  "class-methods-use-this":"off"
   }
 }

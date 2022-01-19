@@ -1,11 +1,8 @@
-import { v4 as uuidv4 } from 'uuid';
 import { User } from '../../types/User.type';
 import {UserEntity} from '../../db/entity/user';
-import {TaskEntity} from '../../db/entity/task';
 import connection from '../../server';
 
-const getUserRepository = async() => await connection.then(c => c.getRepository(UserEntity));
-const getTaskRepository = async() => await connection.then(c => c.getRepository(TaskEntity));
+const getUserRepository = async() => connection.then(c => c.getRepository(UserEntity));
 
 /**
  * Returns array of Users
@@ -27,7 +24,7 @@ export const getUserById = async(id:string):Promise<User | undefined> => getUser
  */
 export const createUser = async(user:User):Promise<User> => {
   const userRepository = await getUserRepository();
-  return await userRepository.save({...user})
+  return userRepository.save({...user})
 }
 
 /**
@@ -42,7 +39,7 @@ export const updateUserById = async(user:User, id :string):Promise<User | undefi
   if (!updatedUser) {
     return;
   }
-  return await userRepository.save({ updatedUser, ...user });
+  return userRepository.save({ updatedUser, ...user });
 }
 
 /**
@@ -52,7 +49,7 @@ export const updateUserById = async(user:User, id :string):Promise<User | undefi
  */
 export const deleteUserById = async(id :string):Promise<boolean> => {
   const userRepository = await getUserRepository();
-  const userIsDeleted = (await userRepository.delete({id})).affected ? true : false;
+  const userIsDeleted = !!(await userRepository.delete({id})).affected;
   return userIsDeleted;
 }
 

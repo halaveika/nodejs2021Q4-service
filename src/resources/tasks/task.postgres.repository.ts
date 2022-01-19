@@ -1,12 +1,9 @@
-
-import { v4 as uuidv4 } from 'uuid';
-import {taskStore} from '../../db/store';
 import { Task } from '../../types/Task.type';
 import {TaskEntity} from '../../db/entity/task';
 import connection from '../../server';
 
 
-const getTaskRepository = async() => await connection.then(c => c.getRepository(TaskEntity));
+const getTaskRepository = async() => connection.then(c => c.getRepository(TaskEntity));
 /**
  * Returns array of Tasks on current Board
  * @param boardId - id of Board
@@ -34,7 +31,7 @@ export const getTaskById = async(boardId:string, taskId:string):Promise<Task | u
  */
 export const createTask = async(task:Task, boardId:string):Promise<Task> => {
   const taskRepository = await getTaskRepository();
-  return await taskRepository.save({...task,boardId});
+  return taskRepository.save({...task,boardId});
 }
 
 
@@ -48,11 +45,10 @@ export const createTask = async(task:Task, boardId:string):Promise<Task> => {
 export const updateTaskById = async(task:Task, boardId:string, taskId:string):Promise<Task | undefined> => {
   const taskRepository = await getTaskRepository();
   const updatedTask  = taskRepository.findOne({ id: taskId, boardId });
-  const index = taskStore.findIndex(item => item.id === taskId && item.boardId === boardId);
   if (!updatedTask) {
     return;
   }
-  return await taskRepository.save({ updatedTask, ...task });
+  return taskRepository.save({ updatedTask, ...task });
 }
 
 /**
@@ -61,8 +57,6 @@ export const updateTaskById = async(task:Task, boardId:string, taskId:string):Pr
  * @param taskId - id of Task
  * @returns Promise boolean
  */
-export const deleteTaskById = async(boardId:string, taskId:string):Promise<boolean> => {
- return (await getTaskRepository().then(taskRepository =>
-    taskRepository.delete({ id:taskId, boardId}))).affected ? true : false;
-}
+export const deleteTaskById = async(boardId:string, taskId:string):Promise<boolean> => !!(await getTaskRepository().then(taskRepository =>
+    taskRepository.delete({ id:taskId, boardId}))).affected
 

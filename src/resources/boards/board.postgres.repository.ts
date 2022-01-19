@@ -1,11 +1,8 @@
-import { v4 as uuidv4 } from 'uuid';
 import { Board } from '../../types/Board.type';
 import {BoardEntity} from '../../db/entity/board';
-import {TaskEntity} from '../../db/entity/task';
 import connection from '../../server';
 
-const getBoardRepository = async() => await connection.then(c => c.getRepository(BoardEntity));
-const getTaskRepository = async() => await connection.then(c => c.getRepository(TaskEntity));
+const getBoardRepository = async() => connection.then(c => c.getRepository(BoardEntity));
 
 /**
  * Returns array of Boards
@@ -29,7 +26,7 @@ export const getBoardById = async(id:string):Promise<Board | undefined> =>
  */
 export const createBoard = async(board:Board):Promise<Board> => {
   const boardRepository = await getBoardRepository();
-  return await boardRepository.save({...board});
+  return boardRepository.save({...board});
 }
 
 /**
@@ -44,7 +41,7 @@ export const updateBoardById = async(board:Board, id:string):Promise<Board | und
   if (!updatedBoard) {
     return;
   }
-  return await boardRepository.save({ updatedBoard, ...board });
+  return boardRepository.save({ updatedBoard, ...board });
 }
 
 /**
@@ -54,7 +51,7 @@ export const updateBoardById = async(board:Board, id:string):Promise<Board | und
  */
 export const deleteBoardById = async(id:string):Promise<boolean> => {
   const boardRepository = await getBoardRepository();
-  const boardIsDeleted = (await boardRepository.delete({ id})).affected ? true : false;
+  const boardIsDeleted = !!(await boardRepository.delete({ id})).affected;
  return boardIsDeleted;
 }
 

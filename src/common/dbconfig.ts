@@ -19,7 +19,7 @@ export const dbConfig: ConnectionOptions = {
   entities: [BoardEntity,TaskEntity,UserEntity],
   extra: {
     ssl: {
-      require: process.env.TYPEORM_SSL === "true" ? true : false,
+      require: process.env.TYPEORM_SSL === "true",
       rejectUnauthorized: false,
     },
   },

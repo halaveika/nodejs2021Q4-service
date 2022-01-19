@@ -1,5 +1,5 @@
-import {config} from './common/config'
 import { createConnection } from "typeorm";
+import {config} from './common/config'
 import { dbConfig } from "./common/dbconfig";
 import app from './app';
 import logger from './common/logger';
