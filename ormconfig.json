@@ -1,17 +1,17 @@
-module.exports = {
+{
   "name": "default",
    "type": "postgres",
-   "host": process.env.TYPEORM_HOST,
-   "port": Number(process.env.TYPEORM_PORT),
-   "username": process.env.TYPEORM_USERNAME,
-   "password": process.env.TYPEORM_PASSWORD,
-   "database": process.env.TYPEORM_DATABASE,
-   "synchronize": process.env.TYPEORM_SYNCHRONIZE,
+   "host": "ec2-54-195-141-170.eu-west-1.compute.amazonaws.com",
+   "port": 5432,
+   "username": "tkhnjcyvdaommy",
+   "password": "1201b8a403c52446075fcf062668fa4ed04b54db98e7feceaa4da1f1bf5cf8da",
+   "database": "d9quhlpq4rki0p",
+   "synchronize": false,
    "migrationsRun": true,
    "logging": false,
    "extra": {
      "ssl": {
-       "require": (process.env.TYPEORM_SSL === 'true') ? true : false,
+       "require": true,
        "rejectUnauthorized": false
      }
    },

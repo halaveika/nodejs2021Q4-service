@@ -4,8 +4,6 @@ import { dbConfig } from "./common/dbconfig";
 import app from './app';
 import logger from './common/logger';
 
-
-
 const connection = createConnection(dbConfig);
 /**
  * Staring listen server on current port
