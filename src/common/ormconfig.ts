@@ -3,10 +3,12 @@ import dotenv from "dotenv";
 import {BoardEntity} from '../db/entity/board';
 import {TaskEntity} from '../db/entity/task';
 import {UserEntity} from '../db/entity/user';
+import * as path from 'path';
 
 dotenv.config();
 
-export const dbConfig: ConnectionOptions = {
+export default {
+  name: "default",
   type: "postgres",
   host: process.env.TYPEORM_HOST,
   port: Number(process.env.TYPEORM_PORT),
@@ -23,4 +25,11 @@ export const dbConfig: ConnectionOptions = {
       rejectUnauthorized: false,
     },
   },
-};
+  migrations: [
+    path.join(__dirname, "../db/migration/*.ts")
+ ],
+ cli: {
+  "entitiesDir":path.join(__dirname, "../db/entity"),
+  "migrationsDir":path.join(__dirname, "../db/migration")
+ }
+} as ConnectionOptions;

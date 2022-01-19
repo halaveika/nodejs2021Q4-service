@@ -29,19 +29,32 @@ For more information about OpenAPI/Swagger please visit https://swagger.io/.
 
 ## Running application in Docker
 
+```
+npm run dev:docker 
+```
+or
+
+```
 docker-compose up --build
+```
 
 You should wait while the containers -app and -postgres run in development mode;
 
+```
 docker exec -i -t app /bin/bash
+```
 
 You can get into -app container with this command
 
+```
 docker stop app postgres
+```
 
 This command stop -app and -postgres containers
 
+```
 docker rm app postgres
+```
 
 This command delete -app and -postgres containers
 

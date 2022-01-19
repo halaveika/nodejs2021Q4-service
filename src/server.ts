@@ -1,10 +1,10 @@
 import { createConnection } from "typeorm";
 import {config} from './common/config'
-import { dbConfig } from "./common/dbconfig";
+import ormconfig  from "./common/ormconfig";
 import app from './app';
 import logger from './common/logger';
 
-const connection = createConnection(dbConfig);
+const connection = createConnection(ormconfig);
 /**
  * Staring listen server on current port
  */
