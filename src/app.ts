@@ -4,9 +4,12 @@ import fastifySwagger from 'fastify-swagger';
 import boardRouter from './resources/boards/board.router';
 import userRouter from './resources/users/user.router';
 import taskRouter from './resources/tasks/task.router';
+import loginRouter from './resources/login/login.router';
 import logger from './common/logger';
 import errorHandler from './common/errorHandler';
-import "reflect-metadata"
+import "reflect-metadata";
+import {config} from './common/config';
+import "fastify-jwt";
 
 const app: FastifyInstance = fastify({logger})
 app.register(fastifySwagger,
@@ -23,6 +26,7 @@ app.register(fastifySwagger,
   },
 });
 app.setErrorHandler(errorHandler);
+app.register(loginRouter);
 app.register(userRouter);
 app.register(boardRouter);
 app.register(taskRouter, { prefix: 'boards/:boardId'});
