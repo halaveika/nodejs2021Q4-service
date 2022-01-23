@@ -1,10 +1,10 @@
 import { loginHandler } from './login.handler';
+import { responseLoginSchema, requestLoginSchema } from './login.model';
 
 export const loginUser = {
-  schema: {
-    body: {login: 'string', password: 'string'},
+  schema: {responseLoginSchema,
     response: {
-      200: {token:'string'},
+      200: requestLoginSchema,
     },
   },
   handler: loginHandler,

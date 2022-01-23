@@ -9,7 +9,7 @@ import {LoginReqBody} from '../../types/User.request.type'
 
 const getUserRepository = async() => connection.then(c => c.getRepository(UserEntity));
 
-const generatePassword = async (password:string) => {
+export const generatePassword = async (password:string) => {
   const setRounds = 10
   const salt = await bcrypt.genSalt(setRounds)
   const passwordHashed = await bcrypt.hash(password, salt)

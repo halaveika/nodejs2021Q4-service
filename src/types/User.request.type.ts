@@ -17,5 +17,5 @@ export type UserReqBody = FastifyRequest<{
 
 
 export type LoginReqBody = FastifyRequest<{
-  Body: Omit<User, 'id' | 'name'>;
+  Body: Omit<User, 'id'>;
 }>
