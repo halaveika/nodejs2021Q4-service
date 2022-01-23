@@ -3,7 +3,7 @@ import { getAllBoardsHandler,getBoardByIdHandler,createBoardHandler, updateBoard
 import { validateHook } from '../../hooks/auth';
 
 export const getBoards = {
-  preHandler: [validateHook],
+  preValidation: validateHook,
   schema: {
     response: {
       200: {
@@ -16,7 +16,7 @@ export const getBoards = {
 }
 
 export const getBoard = {
-  preHandler: [validateHook],
+  preValidation: validateHook,
   schema: {
     querystring: {
       boardId: { type: 'string' }
@@ -29,7 +29,7 @@ export const getBoard = {
 }
 
 export const postBoard = {
-  preHandler: [validateHook],
+  preValidation: validateHook,
   schema: {
     body: requestBoardSchema,
     response: {
@@ -40,7 +40,7 @@ export const postBoard = {
 }
 
 export const putBoard = {
-  preHandler: [validateHook],
+  preValidation: validateHook,
   schema: {
     querystring: {
       boardId: { type: 'string' }
@@ -54,7 +54,7 @@ export const putBoard = {
 }
 
 export const deleteBoard = {
-  preHandler: [validateHook],
+  preValidation: validateHook,
   schema: {
     querystring: {
       boardId: { type: 'string' }

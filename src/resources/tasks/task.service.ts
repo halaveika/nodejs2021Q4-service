@@ -3,7 +3,7 @@ import { getAllTasksHandler,getTaskByIdHandler,createTaskHandler, updateTaskById
 import { validateHook } from '../../hooks/auth';
 
 export const getTasks = {
-  preHandler: [validateHook],
+  preValidation: validateHook,
   schema: {
     querystring: {
       boardId: { type: 'string' }
@@ -19,7 +19,7 @@ export const getTasks = {
 }
 
 export const getTask = {
-  preHandler: [validateHook],
+  preValidation: validateHook,
   schema: {
     querystring: {
       boardId: { type: 'string' },
@@ -33,7 +33,7 @@ export const getTask = {
 }
 
 export const postTask = {
-  preHandler: [validateHook],
+  preValidation: validateHook,
   schema: {
     querystring: {
       boardId: { type: 'string' }
@@ -47,7 +47,7 @@ export const postTask = {
 }
 
 export const putTask = {
-  preHandler: [validateHook],
+  preValidation: validateHook,
   schema: {
     querystring: {
       boardId: { type: 'string' },
@@ -62,7 +62,7 @@ export const putTask = {
 }
 
 export const deleteTask = {
-  preHandler: [validateHook],
+  preValidation: validateHook,
   schema: {
     querystring: {
       boardId: { type: 'string' },

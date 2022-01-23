@@ -4,7 +4,7 @@ import { validateHook } from '../../hooks/auth';
 
 
 export const getUsers = {
-  preHandler: [validateHook],
+  preValidation: validateHook,
   schema: {
     response: {
       200: {
@@ -17,7 +17,7 @@ export const getUsers = {
 }
 
 export const getUser = {
-  preHandler: [validateHook],
+  preValidation: validateHook,
   schema: {
     querystring: {
       id: { type: 'string' }
@@ -30,7 +30,7 @@ export const getUser = {
 }
 
 export const postUser = {
-  preHandler: [validateHook],
+  preValidation: validateHook,
   schema: {
     body: requestUserSchema,
     response: {
@@ -41,7 +41,7 @@ export const postUser = {
 }
 
 export const putUser = {
-  preHandler: [validateHook],
+  preValidation: validateHook,
   schema: {
     querystring: {
       id: { type: 'string' }
@@ -55,7 +55,7 @@ export const putUser = {
 }
 
 export const deleteUser = {
-  preHandler: [validateHook],
+  preValidation: validateHook,
   schema: {
     querystring: {
       id: { type: 'string' }
