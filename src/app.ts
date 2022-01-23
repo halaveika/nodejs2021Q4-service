@@ -7,8 +7,6 @@ import userRouter from './resources/users/user.router';
 import taskRouter from './resources/tasks/task.router';
 import loginRouter from './resources/login/login.router';
 import logger from './common/logger';
-import { validateHook } from './hooks/auth';
-
 
 const app: FastifyInstance = fastify({logger})
 app.register(fastifySwagger,
@@ -24,7 +22,6 @@ app.register(fastifySwagger,
     baseDir: '/doc',
   },
 });
-app.addHook("preHandler", validateHook)
 app.register(loginRouter);
 app.register(userRouter);
 app.register(boardRouter);

@@ -1,20 +1,23 @@
 import {requestUserSchema,responseUserSchema} from './user.model';
 import { getAllUsersHandler,getUserByIdHandler,createUserHandler, updateUserByIdHandler,deleteUserByIdHandler } from './user.handler';
+import { validateHook } from '../../hooks/auth';
 
 
 export const getUsers = {
-    schema: {
-      response: {
-        200: {
-          type: 'array',
-          items: responseUserSchema,
-        },
+  preHandler: [validateHook],
+  schema: {
+    response: {
+      200: {
+        type: 'array',
+        items: responseUserSchema,
       },
     },
-    handler: getAllUsersHandler
+  },
+  handler: getAllUsersHandler
 }
 
 export const getUser = {
+  preHandler: [validateHook],
   schema: {
     querystring: {
       id: { type: 'string' }
@@ -27,6 +30,7 @@ export const getUser = {
 }
 
 export const postUser = {
+  preHandler: [validateHook],
   schema: {
     body: requestUserSchema,
     response: {
@@ -37,6 +41,7 @@ export const postUser = {
 }
 
 export const putUser = {
+  preHandler: [validateHook],
   schema: {
     querystring: {
       id: { type: 'string' }
@@ -50,7 +55,7 @@ export const putUser = {
 }
 
 export const deleteUser = {
-
+  preHandler: [validateHook],
   schema: {
     querystring: {
       id: { type: 'string' }

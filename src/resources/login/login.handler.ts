@@ -30,7 +30,7 @@ const comparePassword = async (password:string, existsPassword:string) => {
 const loginUser = async (login:string, password:string) => {
   getUserRepository().then();
   const user = <User | undefined>await getUserRepository().then(userRepository => userRepository.findOne({login}));
-
+console.log(user);
   if (!user) {
       throw new Error('Forbidden')
   }
@@ -53,6 +53,7 @@ export const loginHandler = async(req:LoginReqBody, reply:FastifyReply):Promise<
   if(!userToken) {
     reply.code(403).send();
   }
+  console.log(userToken);
   reply.code(200).send(userToken);
 }
 
