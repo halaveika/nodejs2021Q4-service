@@ -1,7 +1,7 @@
 import { User } from '../../types/User.type';
 import {UserEntity} from '../../db/entity/user';
 import connection from '../../server';
-import {generatePassword} from '../login/login.handler'
+import {generatePassword} from '../../utils/utilsPassword';
 
 const getUserRepository = async() => connection.then(c => c.getRepository(UserEntity));
 

@@ -8,7 +8,6 @@ import {UserEntity} from '../db/entity/user';
 dotenv.config();
 
 export default {
-  name: "default",
   type: "postgres",
   host: process.env.POSTGRES_HOST,
   port: Number(process.env.POSTGRES_PORT),
@@ -16,7 +15,7 @@ export default {
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DATABASE,
   synchronize: Boolean(process.env.POSTGRES_SYNCHRONIZE),
-  migrationsRun: true,
+  migrationsRun: false,
   logging: false,
   entities: [BoardEntity,TaskEntity,UserEntity],
   migrations: [

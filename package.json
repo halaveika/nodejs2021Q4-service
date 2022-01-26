@@ -19,7 +19,8 @@
     "entity:create": "npm run typeorm entity:create -- -n",
     "migrate:generate": "npm run typeorm migration:generate -- -n",
     "migrate:run": "npm run typeorm migration:run",
-    "migrate:revert": "npm run typeorm migration:revert"
+    "migrate:revert": "npm run typeorm migration:revert",
+    "dev:migrate": "npm run migrate:run && npm run dev"
   },
   "keywords": [
     "rss",
