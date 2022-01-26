@@ -1,20 +1,19 @@
-version: "3.8"
+version: "3.5"
 services: 
   postgres:
     build:
       context: .
       dockerfile: docker/db.Dockerfile
-    container_name: "postgres"
-    env_file:
-      - .env
+    container_name: ${POSTGRES_HOST}
     networks:
       - rsschool
     environment: 
-      POSTGRES_DB: ${TYPEORM_DATABASE}
-      POSTGRES_USER: ${TYPEORM_USERNAME}
-      POSTGRES_PASSWORD: ${TYPEORM_PASSWORD}
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_USER: ${POSTGRES_USERNAME}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DATABASE}
     ports:
-      - ${TYPEORM_PORT}:${TYPEORM_PORT}
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
     volumes:
       - db:/var/lib/postgresql/data
   app:
@@ -26,10 +25,10 @@ services:
       - postgres
     ports: 
       - ${PORT}:${PORT}
+    restart: always
     volumes:
       - ./src:/usr/src/app/src
       - logs:/usr/src/app/logs
-    restart: always
     env_file:
       - .env
     networks:
@@ -37,7 +36,6 @@ services:
 networks:
   rsschool:
     driver: bridge
-
 volumes:
-  db:
   logs:
+  db:

@@ -1,10 +1,11 @@
 import { createConnection } from "typeorm";
 import {config} from './common/config'
-import ormconfig  from "./common/ormconfig";
+import ormconfig_dev  from "./common/ormconfig_dev";
+import ormconfig_prod  from "./common/ormconfig_prod";
 import app from './app';
 import logger from './common/logger';
 
-const connection = createConnection(ormconfig);
+const connection = createConnection((config.NODE_ENV === 'production') ? ormconfig_prod : ormconfig_dev);
 /**
  * Staring listen server on current port
  */
