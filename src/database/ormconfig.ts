@@ -1,8 +1,8 @@
 import { ConnectionOptions } from "typeorm";
 import * as path from 'path';
-import {BoardEntity} from '../db/entity/board';
-import {TaskEntity} from '../db/entity/task';
-import {UserEntity} from '../db/entity/user';
+import {BoardEntity} from '../board/board.entity';
+import {TaskEntity} from '../task/task.entity';
+import {UserEntity} from '../user/user.entity';
 
 export default {
   name: "default",
@@ -23,10 +23,9 @@ export default {
     },
   } : {},
   migrations: [
-    path.join(__dirname, "../db/migration/*.ts")
+    path.join(__dirname, "./migration/*.ts")
  ],
  cli: {
-  "entitiesDir":path.join(__dirname, "../db/entity"),
-  "migrationsDir":path.join(__dirname, "../db/migration")
+  "migrationsDir":path.join(__dirname, "./migration")
  }
 } as ConnectionOptions;

@@ -7,6 +7,8 @@ services:
     env_file:
       - .development.env
     container_name: postgres
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
     networks:
       - rsschool
     volumes:
@@ -18,6 +20,8 @@ services:
     env_file:
       - .development.env
     container_name: "app"
+    ports: 
+      - ${PORT}:${PORT}
     depends_on:
       - postgres
     restart: always
