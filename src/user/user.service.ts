@@ -32,7 +32,8 @@ export class UserService {
   */
   async createUser (user:UserEntity):Promise<Omit<UserEntity, 'password'>> {
    const {password} = user;
-   return this.userRepository.save({...user,password: await generatePassword(password!)});
+   const {id} = await this.userRepository.save({...user,password: await generatePassword(password!)});
+   return  this.userRepository.findOne({id});
  }
  
  /**
@@ -47,7 +48,8 @@ export class UserService {
      return;
    }
    const {password} = user;
-   return this.userRepository.save({ updatedUser, ...user,password: await generatePassword(password!) });
+   await this.userRepository.save({ updatedUser, ...user,password: await generatePassword(password!) });
+   return this.userRepository.findOne({id});
  }
  
  /**
