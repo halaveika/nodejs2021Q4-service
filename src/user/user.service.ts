@@ -30,9 +30,8 @@ export class UserService {
   * @param user - User object for creating User in store
   * @returns Promise of User
   */
-  async createUser (user:UserEntity):Promise<UserEntity> {
+  async createUser (user:UserEntity):Promise<Omit<UserEntity, 'password'>> {
    const {password} = user;
-   console.log(password);
    return this.userRepository.save({...user,password: await generatePassword(password!)});
  }
  
@@ -42,7 +41,7 @@ export class UserService {
   * @param id - id of User
   * @returns Promise of User or undefined
   */
-  async updateUserById(user:UserEntity, id :string):Promise<UserEntity | undefined>{
+  async updateUserById(user:UserEntity, id :string):Promise<Omit<UserEntity, 'password'> | undefined>{
    const updatedUser  = this.userRepository.findOne({ id });
    if (!updatedUser) {
      return;

@@ -12,7 +12,7 @@ export class UserEntity extends BaseEntity {
   @Column({ type: "varchar", length: 255})
   login!: string;
 
-  @Column({ type: "varchar", length: 255 })
+  @Column({ type: "varchar", length: 255, select: false })
   password?: string;
 
   @BeforeInsert()
