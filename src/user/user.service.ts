@@ -61,6 +61,12 @@ export class UserService {
    const userIsDeleted = !!(await this.userRepository.delete({id})).affected;
    return userIsDeleted;
  }
- 
 
+ async getUserByLogin (login:string):Promise<UserEntity | undefined>{
+   console.log(login);
+   const user = await this.userRepository.findOne({where:{login},select:['id','name','login','password']});
+   console.log(user);
+  return user
+}
+ 
 }

@@ -7,12 +7,3 @@ export const generatePassword = async (password:string) => {
   return passwordHashed;
 }
 
-export const comparePassword = async (password:string, existsPassword:string) => {
-  const isPasswordCorrect = await bcrypt.compare(password, existsPassword);
-
-  if (!isPasswordCorrect) {
-      throw new Error('unauthrized password')
-  }
-
-  return true;
-}

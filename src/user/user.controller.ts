@@ -1,7 +1,9 @@
-import { Controller, Get,Body, Param, Post, Put, Delete,HttpCode,NotFoundException,BadRequestException } from '@nestjs/common';
+import { Controller, Get,Body, Param, Post, Put, Delete,HttpCode,NotFoundException,BadRequestException, UseGuards } from '@nestjs/common';
 import { UserEntity } from './user.entity';
 import { UserService } from './user.service';
+import {AuthGuard} from "../auth/auth.guard";
 
+@UseGuards(AuthGuard)
 @Controller('users')
 export class UserController {
   constructor(private userService: UserService) {}
