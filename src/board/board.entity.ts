@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BaseEntity, ManyToMany, JoinTable } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
-import { column } from '../types/Column.type';
+import { column } from '../common/types/Column.type';
 
 @Entity("boards")
 export class BoardEntity extends BaseEntity {

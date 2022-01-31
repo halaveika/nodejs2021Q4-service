@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UserEntity } from './user.entity';
-import { generatePassword } from 'src/utils/utilsPassword';
+import { generatePassword } from 'src/common/utils/utilsPassword';
 
 @Injectable()
 export class UserService {
@@ -63,9 +63,7 @@ export class UserService {
  }
 
  async getUserByLogin (login:string):Promise<UserEntity | undefined>{
-   console.log(login);
    const user = await this.userRepository.findOne({where:{login},select:['id','name','login','password']});
-   console.log(user);
   return user
 }
  

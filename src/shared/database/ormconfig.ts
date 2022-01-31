@@ -1,8 +1,8 @@
 import { ConnectionOptions } from "typeorm";
 import * as path from 'path';
-import {BoardEntity} from '../board/board.entity';
-import {TaskEntity} from '../task/task.entity';
-import {UserEntity} from '../user/user.entity';
+import {BoardEntity} from '../../board/board.entity';
+import {TaskEntity} from '../../task/task.entity';
+import {UserEntity} from '../../user/user.entity';
 
 export default {
   name: "default",

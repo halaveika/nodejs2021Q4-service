@@ -15,7 +15,6 @@ export class AuthService {
       throw new NotFoundException('User with current login not found');
     }
     await this.comparePassword(password, user.password!);
-    console.log(user);
     return this.generateToken(user);
   }
 

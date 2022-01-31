@@ -1,5 +1,5 @@
 import {MigrationInterface, QueryRunner} from "typeorm";
-import {generatePassword} from '../../utils/utilsPassword';
+import {generatePassword} from '../../../common/utils/utilsPassword';
 
 export class Rsschool11642544789278 implements MigrationInterface {
     name = 'Rsschool11642544789278'
