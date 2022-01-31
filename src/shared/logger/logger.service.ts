@@ -34,7 +34,7 @@ export class  WinstonLogger implements LoggerService {
             winston.format.uncolorize(),
           ),
           filename: path.join(__dirname, '../../../logs/all.log'),
-          level: 'info'
+          level: process.env.LOG_LEVEL
         }),
         new winston.transports.File({
           format: winston.format.combine(
@@ -49,23 +49,23 @@ export class  WinstonLogger implements LoggerService {
     })
   }
 
-  log(message: any, context?: string) {
+  log(message: string, context?: string) {
     return this.winstonLogger.info(message, { context: context || this.context })
   }
 
-  error(message: any, trace?: string, context?: string) {
+  error(message: string, trace?: string, context?: string) {
     return this.winstonLogger.error(message, { trace, context: context || this.context })
   }
 
-  warn(message: any, context?: string) {
+  warn(message: string, context?: string) {
     return this.winstonLogger.warn(message, { context: context || this.context })
   }
 
-  debug(message: any, context?: string) {
+  debug(message: string, context?: string) {
     return this.winstonLogger.debug(message, { context: context || this.context })
   }
 
-  verbose(message: any, context?: string) {
+  verbose(message: string, context?: string) {
     return this.winstonLogger.verbose(message, { context: context || this.context })
   }
 }
