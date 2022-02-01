@@ -1,6 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BaseEntity } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
-import { Exclude } from 'class-transformer';
 
 @Entity("users")
 export class UserEntity extends BaseEntity {

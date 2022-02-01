@@ -5,12 +5,13 @@ import { UserModule } from './user/user.module';
 import { TaskModule } from './task/task.module';
 import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
+import { FileModule } from './file/file.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath: `.${process.env.NODE_ENV}.env`
-   }), BoardModule, UserModule, TaskModule, AuthModule, SharedModule],
+   }), BoardModule, UserModule, TaskModule, AuthModule, SharedModule, FileModule],
   controllers: [],
   providers: [],
 })
