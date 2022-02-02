@@ -20,6 +20,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "dev:docker": "docker-compose --env-file .development.env up --build",
     "typeorm": "cross-env NODE_ENV=development npx ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config src/shared/database/ormconfig.ts",
+    "migrate:generate": "npm run typeorm migration:generate -- -n",
     "migrate:run": "npm run typeorm migration:run",
     "migrate:revert": "npm run typeorm migration:revert",
     "dev:migrate": "npm run migrate:run && npm run start:dev"

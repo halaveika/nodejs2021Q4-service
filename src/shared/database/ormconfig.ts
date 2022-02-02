@@ -3,6 +3,7 @@ import * as path from 'path';
 import {BoardEntity} from '../../board/board.entity';
 import {TaskEntity} from '../../task/task.entity';
 import {UserEntity} from '../../user/user.entity';
+import { ColumnEntity } from '../../column/column.entity';
 
 export default {
   name: "default",
@@ -15,7 +16,7 @@ export default {
   synchronize: Boolean(process.env.POSTGRES_SYNCHRONIZE),
   migrationsRun: true,
   logging: false,
-  entities: [BoardEntity,TaskEntity,UserEntity],
+  entities: [BoardEntity,TaskEntity,UserEntity,ColumnEntity],
   extra: (process.env.NODE_ENV === 'production') ? {
     ssl: {
       require: process.env.POSTGRES_SSL === "true",

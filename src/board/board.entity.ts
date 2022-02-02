@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BaseEntity, ManyToMany, JoinTable } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
-import { column } from '../common/types/Column.type';
+import { ColumnEntity } from "../column/column.entity";
 
 @Entity("boards")
 export class BoardEntity extends BaseEntity {
@@ -14,7 +14,7 @@ export class BoardEntity extends BaseEntity {
     type: 'jsonb',
     nullable: true,
 })
-  columns!:  column[]
+  columns!:  ColumnEntity[]
 
   @BeforeInsert()
   async addId(): Promise<void> {

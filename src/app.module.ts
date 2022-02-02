@@ -6,12 +6,13 @@ import { TaskModule } from './task/task.module';
 import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 import { FileModule } from './file/file.module';
+import { ColumnModule } from './column/column.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath: `.${process.env.NODE_ENV}.env`
-   }), BoardModule, UserModule, TaskModule, AuthModule, SharedModule, FileModule],
+   }), BoardModule, UserModule, TaskModule, AuthModule, SharedModule, FileModule, ColumnModule],
   controllers: [],
   providers: [],
 })

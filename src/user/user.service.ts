@@ -2,11 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UserEntity } from './user.entity';
-import { generatePassword } from 'src/common/utils/utilsPassword';
+import { UtilsService } from '../shared/utils/utils.service';
 
 @Injectable()
 export class UserService {
-  constructor(@InjectRepository(UserEntity) private readonly userRepository: Repository<UserEntity> ) {}
+  constructor(@InjectRepository(UserEntity) private readonly userRepository: Repository<UserEntity>, private utilsService: UtilsService) {}
 
 /**
  * Returns array of Users
@@ -32,7 +32,7 @@ export class UserService {
   */
   async createUser (user:UserEntity):Promise<Omit<UserEntity, 'password'>> {
    const {password} = user;
-   const {id} = await this.userRepository.save({...user,password: await generatePassword(password!)});
+   const {id} = await this.userRepository.save({...user,password: await this.utilsService.generatePassword(password!)});
    return  this.userRepository.findOne({id});
  }
  
@@ -48,7 +48,7 @@ export class UserService {
      return;
    }
    const {password} = user;
-   await this.userRepository.save({ updatedUser, ...user,password: await generatePassword(password!) });
+   await this.userRepository.save({ updatedUser, ...user,password: await this.utilsService.generatePassword(password!) });
    return this.userRepository.findOne({id});
  }
  
