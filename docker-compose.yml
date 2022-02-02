@@ -27,6 +27,7 @@ services:
     restart: always
     volumes:
       - ./src:/usr/src/app/src
+      - ./public:/usr/src/app/public
       - logs:/usr/src/app/logs
     networks:
       - rsschool
