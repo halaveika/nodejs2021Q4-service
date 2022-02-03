@@ -58,6 +58,13 @@ docker rm app postgres
 
 This command delete -app and -postgres containers
 
+```
+docker exec app sh
+npm run migrate:generate <MIGRATION_TITLE>
+```
+
+This command generate migration in runing container
+
 ## Testing
 
 After application running open new terminal and enter:

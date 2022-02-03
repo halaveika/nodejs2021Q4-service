@@ -1,7 +1,7 @@
 import { Controller, Get,Body, Param, Post, Put, Delete,NotFoundException,HttpCode,BadRequestException,UseGuards} from '@nestjs/common';
-import { TaskEntity } from './task.entity';
 import { TaskService } from './task.service';
 import {AuthGuard} from "../auth/auth.guard";
+import { CreateTaskDto } from './dto/create-task.dto';
 
 @UseGuards(AuthGuard)
 @Controller('boards/:boardId/tasks')
@@ -23,8 +23,8 @@ export class TaskController {
   }
 
   @Post()
-  async createTask(@Param('boardId') boardId: string,@Body() task:TaskEntity){
-    const newTask = await this.taskService.createTask(task,boardId);
+  async createTask(@Param('boardId') boardId: string,@Body() taskDto:CreateTaskDto){
+    const newTask = await this.taskService.createTask(taskDto,boardId);
     if(!newTask) {
       throw new BadRequestException('Task not created');
     }
@@ -32,8 +32,8 @@ export class TaskController {
   }
 
   @Put('/:taskId')
-  async updateTaskById(@Param('boardId') boardId: string, @Param('taskId') taskId: string,@Body() task:TaskEntity){
-    const updatedTask = await this.taskService.updateTaskById(task,boardId, taskId);
+  async updateTaskById(@Param('boardId') boardId: string, @Param('taskId') taskId: string,@Body() taskDto:CreateTaskDto){
+    const updatedTask = await this.taskService.updateTaskById(taskDto,boardId, taskId);
     if(!updatedTask) {
       throw new NotFoundException('Task not found');
     }

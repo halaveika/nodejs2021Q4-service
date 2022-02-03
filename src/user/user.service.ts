@@ -23,13 +23,13 @@ export class UserService {
    return  this.userRepository.findOne({id});
  }
  
-  async updateUserById(user:UserEntity, id :string):Promise<Omit<UserEntity, 'password'> | undefined>{
+  async updateUserById(userDto: CreateUserDto, id :string):Promise<Omit<UserEntity, 'password'> | undefined>{
    const updatedUser  = this.userRepository.findOne({ id });
    if (!updatedUser) {
      return;
    }
-   const {password} = user;
-   await this.userRepository.save({ updatedUser, ...user,password: await this.utilsService.generatePassword(password!) });
+   const {password} = userDto;
+   await this.userRepository.save({ updatedUser, ...userDto,password: await this.utilsService.generatePassword(password!) });
    return this.userRepository.findOne({id});
  }
  

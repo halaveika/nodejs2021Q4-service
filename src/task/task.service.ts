@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { TaskEntity } from './task.entity';
+import { CreateTaskDto } from './dto/create-task.dto';
 
 @Injectable()
 export class TaskService {
@@ -33,8 +34,8 @@ async getTaskById(boardId:string, taskId:string):Promise<TaskEntity | undefined>
  * @param boardId - id of Board
  * @returns Promise of Task
  */
-async createTask(task:TaskEntity, boardId:string):Promise<TaskEntity>{
-  return this.taskRepository.save({...task,boardId});
+async createTask(taskDto:CreateTaskDto, boardId:string):Promise<TaskEntity>{
+  return this.taskRepository.save({...taskDto,boardId});
 }
 
 
@@ -45,12 +46,12 @@ async createTask(task:TaskEntity, boardId:string):Promise<TaskEntity>{
  * @param taskId - id of Task
  * @returns Promise of Task or undefined
  */
-async updateTaskById(task:TaskEntity, boardId:string, taskId:string):Promise<TaskEntity | undefined>{
+async updateTaskById(taskDto:CreateTaskDto, boardId:string, taskId:string):Promise<TaskEntity | undefined>{
   const updatedTask  = this.taskRepository.findOne({ id: taskId, boardId });
   if (!updatedTask) {
     return;
   }
-  return this.taskRepository.save({ updatedTask, ...task });
+  return this.taskRepository.save({ updatedTask, ...taskDto });
 }
 
 /**

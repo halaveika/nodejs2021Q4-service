@@ -1,5 +1,4 @@
 import { Controller, Get,Body, Param, Post, Put, Delete,HttpCode,NotFoundException,BadRequestException, UseGuards } from '@nestjs/common';
-import { UserEntity } from './user.entity';
 import { UserService } from './user.service';
 import {AuthGuard} from "../auth/auth.guard";
 import { CreateUserDto } from './dto/create-user.dto';
@@ -33,8 +32,8 @@ export class UserController {
     }
 
     @Put('/:id')
-    async updateUserById(@Body() user:UserEntity,@Param('id') id: string) {
-      const updatedUser = await this.userService.updateUserById(user,id);
+    async updateUserById(@Body() userDto: CreateUserDto,@Param('id') id: string) {
+      const updatedUser = await this.userService.updateUserById(userDto,id);
       if(!updatedUser) {
         throw new NotFoundException('User not found');
       }

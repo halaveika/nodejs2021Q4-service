@@ -2,6 +2,7 @@ import { Controller, Get,Body, Param, Post, Put, Delete,NotFoundException,HttpCo
 import { BoardEntity } from './board.entity';
 import { BoardService } from './board.service';
 import {AuthGuard} from "../auth/auth.guard";
+import { CreateBoardDto } from './dto/create-board.dto';
 
 @UseGuards(AuthGuard)
 @Controller('boards')
@@ -23,8 +24,8 @@ export class BoardController {
   }
 
   @Post()
-  async createBoard(@Body() board:BoardEntity){
-    const newBoard = await this.boardService.createBoard(board);
+  async createBoard(@Body() boardDto:CreateBoardDto){
+    const newBoard = await this.boardService.createBoard(boardDto);
     if(!newBoard) {
       throw new BadRequestException('Board not created');
     }
@@ -32,8 +33,8 @@ export class BoardController {
   }
 
   @Put('/:boardId')
-  async updateBoardById(@Body() board:BoardEntity, @Param('boardId') boardId: string){
-    const updatedBoard = await this.boardService.updateBoardById(board,boardId);
+  async updateBoardById(@Body() boardDto:CreateBoardDto, @Param('boardId') boardId: string){
+    const updatedBoard = await this.boardService.updateBoardById(boardDto,boardId);
     if(!updatedBoard) {
       throw new NotFoundException('Board not found');
     }

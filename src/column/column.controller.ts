@@ -1,7 +1,7 @@
 import { Controller, Get,Body, Param, Post, Put, Delete,NotFoundException,HttpCode,BadRequestException,UseGuards} from '@nestjs/common';
 import { ColumnService } from './column.service';
-import { ColumnEntity } from './column.entity';
 import {AuthGuard} from "../auth/auth.guard";
+import { CreateColumnDto } from './dto/create-column.dto';
 
 @UseGuards(AuthGuard)
 @Controller('boards/:boardId/columns')
@@ -18,8 +18,8 @@ export class ColumnController {
   }
 
   @Post()
-  async createColumn(@Body() column:ColumnEntity){
-    const newColumn = await this.columnService.createColumn(column);
+  async createColumn(@Body() columnDto: CreateColumnDto){
+    const newColumn = await this.columnService.createColumn(columnDto);
     if(!newColumn) {
       throw new BadRequestException('Column not created');
     }
@@ -27,8 +27,8 @@ export class ColumnController {
   }
 
   @Put('/:id')
-  async updateColumnById(@Param('id') id: string, @Body() column:ColumnEntity){
-    const updatedColumn = await this.columnService.updateColumnById(column,id);
+  async updateColumnById(@Param('id') id: string, @Body() columnDto:CreateColumnDto){
+    const updatedColumn = await this.columnService.updateColumnById(columnDto,id);
     if(!updatedColumn) {
       throw new NotFoundException('Column not found');
     }
