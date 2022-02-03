@@ -2,7 +2,7 @@ import {
   ExceptionFilter,
   Catch,
   ArgumentsHost,
-  HttpException,
+  HttpException
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { WinstonLogger } from '../logger/logger.service';
@@ -17,6 +17,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
     const status = exception.getStatus();
+    const exceptionResponse = exception.getResponse();
     const errorResponse = {
       statusCode: status,
       timestamp: new Date().toISOString(),
@@ -24,6 +25,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
       method: request.method,
       message: exception.message || null,
     };
+    this.appLogger.log(JSON.stringify(exceptionResponse));
     this.appLogger.error(exception.message, JSON.stringify({
       stack: exception.stack,
       requestURL:

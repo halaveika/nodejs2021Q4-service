@@ -2,6 +2,7 @@ import { Controller, Get,Body, Param, Post, Put, Delete,HttpCode,NotFoundExcepti
 import { UserEntity } from './user.entity';
 import { UserService } from './user.service';
 import {AuthGuard} from "../auth/auth.guard";
+import { CreateUserDto } from './dto/create-user.dto';
 
 @UseGuards(AuthGuard)
 @Controller('users')
@@ -23,8 +24,8 @@ export class UserController {
     }
 
     @Post()
-    async createUser(@Body() user:UserEntity) {
-      const newUser = await this.userService.createUser(user);
+    async createUser(@Body() userDto: CreateUserDto) {
+      const newUser = await this.userService.createUser(userDto);
       if(!newUser) {
         throw new BadRequestException('User not created');
       }
