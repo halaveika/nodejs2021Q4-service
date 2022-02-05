@@ -1,5 +1,4 @@
 import { Controller, Get,Body, Param, Post, Put, Delete,NotFoundException,HttpCode, BadRequestException,UseGuards } from '@nestjs/common';
-import { BoardEntity } from './board.entity';
 import { BoardService } from './board.service';
 import {AuthGuard} from "../auth/auth.guard";
 import { CreateBoardDto } from './dto/create-board.dto';
