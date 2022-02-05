@@ -4,8 +4,6 @@ import * as winston from 'winston';
 import * as path from 'path';
 import { utilities as nestWinstonModuleUtilities } from 'nest-winston';
 
-
-
 @Injectable({ scope: Scope.TRANSIENT })
 
 export class  WinstonLogger implements LoggerService {

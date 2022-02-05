@@ -41,7 +41,6 @@ export class BoardController {
   }
 
   @Delete('/:boardId')
-  @HttpCode(204)
   async deleteBoardById(@Param('boardId') boardId: string){
     const isDeleted = await this.boardService.deleteBoardById(boardId);
     if(!isDeleted) {

@@ -36,7 +36,6 @@ export class ColumnController {
   }
 
   @Delete('/:id')
-  @HttpCode(204)
   async deleteTaskById(@Param('id') id: string){
     const isDeleted = await this.columnService.deleteColumnById(id);
     if(!isDeleted) {

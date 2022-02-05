@@ -41,7 +41,6 @@ export class UserController {
     }
 
     @Delete('/:id')
-    @HttpCode(204)
     async deleteUserById(@Param('id') id: string){
       const isDeleted = await this.userService.deleteUserById(id);
       if(!isDeleted) {

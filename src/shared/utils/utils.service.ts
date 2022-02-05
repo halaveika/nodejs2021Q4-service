@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
+import { FastifyRequest } from "fastify";
 
 @Injectable()
 export class UtilsService {
@@ -10,5 +11,9 @@ export class UtilsService {
     const passwordHashed = await bcrypt.hash(password, salt);
     return passwordHashed;
 }
+
+  getFastifyRequestUrl(request: FastifyRequest): string { 
+    return request.raw ? request.raw.url : request.url; 
+} 
 
 }

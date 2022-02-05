@@ -41,7 +41,6 @@ export class TaskController {
   }
 
   @Delete('/:taskId')
-  @HttpCode(204)
   async deleteTaskById(@Param('boardId') boardId: string, @Param('taskId') taskId: string){
     const isDeleted = await this.taskService.deleteTaskById(boardId, taskId);
     if(!isDeleted) {
