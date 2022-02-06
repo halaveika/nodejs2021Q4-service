@@ -154,3 +154,57 @@ npm run migrate:revert
 ```
 Return to the previos migration state
 
+## LOAD TESTING REPORT
+
+Load testing made by Artillery.io
+Test scenarion include testing endpoint "/boards" by CRUD operations with fastify and express engine both.
+
+# Fastfy
+[Fastfy report](./test-report/fastify/report.html).
+```
+  "vusers.created_by_name.CRUD boards": 1200,
+  "vusers.created": 1200,
+  "http.requests": 6000,
+  "http.codes.201": 1200,
+  "http.responses": 6000,
+  "http.codes.200": 4800,
+  "vusers.failed": 0,
+  "vusers.completed": 1200
+  "http.response_time": {
+    "min": 3,
+    "max": 515,
+    "count": 6000,
+    "p50": 47.9,
+    "median": 47.9,
+    "p75": 96.6,
+    "p90": 153,
+    "p95": 186.8,
+    "p99": 262.5,
+    "p999": 368.8
+  },
+```
+
+# Express
+[Express report](./test-report/express/report.html).
+```
+  "vusers.created_by_name.CRUD boards": 1200,
+  "vusers.created": 1200,
+  "http.requests": 6000,
+  "http.codes.201": 1200,
+  "http.responses": 6000,
+  "http.codes.200": 4800,
+  "vusers.failed": 0,
+  "vusers.completed": 1200
+  "http.response_time": {
+    "min": 3,
+    "max": 4680,
+    "count": 6000,
+    "p50": 1495.5,
+    "median": 1495.5,
+    "p75": 1939.5,
+    "p90": 2725,
+    "p95": 3678.4,
+    "p99": 4316.6,
+    "p999": 4583.6
+  },
+```

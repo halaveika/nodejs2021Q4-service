@@ -23,7 +23,9 @@
     "migrate:generate": "npm run typeorm migration:generate -- -n",
     "migrate:run": "npm run typeorm migration:run",
     "migrate:revert": "npm run typeorm migration:revert",
-    "dev:migrate": "npm run migrate:run && npm run start:dev"
+    "dev:migrate": "npm run migrate:run && npm run start:dev",
+    "test:load": "npx artillery run artillery.yml --output test.json",
+    "test:report": "npx artillery report --output report.html test.json"
   },
   "dependencies": {
     "@microsoft/tsdoc": "^0.13.2",
