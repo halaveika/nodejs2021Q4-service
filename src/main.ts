@@ -38,6 +38,14 @@ async function bootstrap() {
     });
   } else {
     app = await NestFactory.create(AppModule);
+    const config = new DocumentBuilder()
+      .setTitle('Trello killer')
+      .setDescription('Docment REST API')
+      .setVersion('1.0.0')
+      .addTag('halaveika')
+      .build();
+    const document = SwaggerModule.createDocument(app, config);
+    SwaggerModule.setup('/doc', app, document);
   }
   app.useGlobalPipes(
     new ValidationPipe({

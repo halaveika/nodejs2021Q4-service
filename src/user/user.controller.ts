@@ -13,17 +13,24 @@ import {
 import { UserService } from './user.service';
 import { AuthGuard } from '../auth/auth.guard';
 import { CreateUserDto } from './dto/create-user.dto';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { UserEntity } from './user.entity';
 
+@ApiTags('users')
 @UseGuards(AuthGuard)
 @Controller('users')
 export class UserController {
   constructor(private userService: UserService) {}
 
+  @ApiOperation({ summary: 'Get All User' })
+  @ApiResponse({ status: 200, type: [UserEntity] })
   @Get()
   getAll() {
     return this.userService.getAllUsers();
   }
 
+  @ApiOperation({ summary: 'Get User' })
+  @ApiResponse({ status: 200, type: UserEntity })
   @Get('/:id')
   async getUserById(@Param('id') id: string) {
     const user = await this.userService.getUserById(id);
@@ -33,6 +40,8 @@ export class UserController {
     return user;
   }
 
+  @ApiOperation({ summary: 'Create User' })
+  @ApiResponse({ status: 200, type: UserEntity })
   @Post()
   async createUser(@Body() userDto: CreateUserDto) {
     const newUser = await this.userService.createUser(userDto);
@@ -42,6 +51,8 @@ export class UserController {
     return newUser;
   }
 
+  @ApiOperation({ summary: 'Update User' })
+  @ApiResponse({ status: 200, type: UserEntity })
   @Put('/:id')
   async updateUserById(
     @Body() userDto: CreateUserDto,
@@ -54,6 +65,8 @@ export class UserController {
     return updatedUser;
   }
 
+  @ApiOperation({ summary: 'Delete User' })
+  @ApiResponse({ status: 204 })
   @Delete('/:id')
   async deleteUserById(@Param('id') id: string) {
     const isDeleted = await this.userService.deleteUserById(id);
