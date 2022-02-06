@@ -10,6 +10,9 @@ import {
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
 import multipart from 'fastify-multipart';
+import fastifySwagger from 'fastify-swagger';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import * as path from 'path';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -21,6 +24,18 @@ async function bootstrap() {
       new FastifyAdapter(),
     );
     (app as NestFastifyApplication).register(multipart);
+    (app as NestFastifyApplication).register(fastifySwagger, {
+      mode: 'static',
+      exposeRoute: true,
+      routePrefix: '/doc',
+      specification: {
+        path: path.join(__dirname, '../doc/api.yaml'),
+        postProcessor(swaggerObject) {
+          return swaggerObject;
+        },
+        baseDir: '/doc',
+      },
+    });
   } else {
     app = await NestFactory.create(AppModule);
   }
