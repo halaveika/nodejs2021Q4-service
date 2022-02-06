@@ -108,11 +108,9 @@ describe('Tasks suite', () => {
             boardId: testBoardId
           });
         });
-        console.log('POST TASK!!!!!!!!!')
-        console.log('testBoardId: ' + testBoardId + '; taskId: ' + taskId)
+
       // Teardown
       await request.delete(routes.tasks.delete(testBoardId, taskId));
-      console.log('DELETE TASK!!!!!!!!!')
     });
   });
 

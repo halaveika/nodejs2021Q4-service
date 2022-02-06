@@ -1,8 +1,4 @@
-import {
-  HttpException,
-  Injectable,
-  StreamableFile,
-} from '@nestjs/common';
+import { HttpException, Injectable, StreamableFile } from '@nestjs/common';
 import { FastifyRequest, FastifyReply } from 'fastify';
 import { createWriteStream, createReadStream } from 'fs';
 import * as path from 'path';

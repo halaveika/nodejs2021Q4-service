@@ -1,11 +1,4 @@
-import {
-  Res,
-  Controller,
-  UseGuards,
-  Post,
-  Param,
-  Get
-} from '@nestjs/common';
+import { Res, Controller, UseGuards, Post, Param, Get } from '@nestjs/common';
 import { FastifyRequest, FastifyReply } from 'fastify';
 import { ParseFile } from './parse-file.pipe';
 import { AuthGuard } from '../auth/auth.guard';
