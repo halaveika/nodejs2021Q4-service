@@ -4,8 +4,6 @@ import { FileService } from './file.service';
 import { ParseFile } from './parse-file.pipe';
 import {AuthGuard} from "../auth/auth.guard";
 
-
-
 @Controller('file')
 export class FileController {
   constructor(private readonly fileService: FileService) {}
