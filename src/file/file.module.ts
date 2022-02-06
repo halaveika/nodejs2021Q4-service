@@ -4,8 +4,8 @@ import { FileController } from './file.controller';
 import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
-  imports:[AuthModule],
+  imports: [AuthModule],
   providers: [FileService],
-  controllers: [FileController]
+  controllers: [FileController],
 })
 export class FileModule {}

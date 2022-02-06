@@ -6,10 +6,9 @@ import { LoggerInterceptor } from './interceptors/logger.interceptor';
 import { HttpExceptionFilter } from './filters/http-exception.filter';
 import { UtilsService } from './utils/utils.service';
 
-
 @Module({
-  imports:[DatabaseModule, LoggerModule],
-  exports:[DatabaseModule,LoggerModule,UtilsService],
+  imports: [DatabaseModule, LoggerModule],
+  exports: [DatabaseModule, LoggerModule, UtilsService],
   providers: [
     { provide: APP_FILTER, useClass: HttpExceptionFilter },
     { provide: APP_INTERCEPTOR, useClass: LoggerInterceptor },

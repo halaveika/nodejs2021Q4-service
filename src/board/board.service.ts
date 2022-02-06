@@ -6,12 +6,15 @@ import { CreateBoardDto } from './dto/create-board.dto';
 
 @Injectable()
 export class BoardService {
-  constructor(@InjectRepository(BoardEntity) private readonly boardRepository: Repository<BoardEntity> ) {}
+  constructor(
+    @InjectRepository(BoardEntity)
+    private readonly boardRepository: Repository<BoardEntity>,
+  ) {}
   /**
    * Returns array of Boards
    * @returns Promise of array of Boards
    */
-  async getAllBoards():Promise<BoardEntity[]>{
+  async getAllBoards(): Promise<BoardEntity[]> {
     return this.boardRepository.find({});
   }
 
@@ -20,8 +23,8 @@ export class BoardService {
    * @param id - id of Board
    * @returns Promise of Board or undefined
    */
-  async getBoardById(id:string):Promise<BoardEntity | undefined> {
-    return this.boardRepository.findOne({id});
+  async getBoardById(id: string): Promise<BoardEntity | undefined> {
+    return this.boardRepository.findOne({ id });
   }
 
   /**
@@ -29,8 +32,8 @@ export class BoardService {
    * @param board - Board object for creating Board in store
    * @returns Promise of Board
    */
-  async createBoard(BoardDto:CreateBoardDto):Promise<BoardEntity> {
-    return this.boardRepository.save({...BoardDto});
+  async createBoard(BoardDto: CreateBoardDto): Promise<BoardEntity> {
+    return this.boardRepository.save({ ...BoardDto });
   }
 
   /**
@@ -39,8 +42,11 @@ export class BoardService {
    * @param id - id of Board
    * @returns Promise of Board or undefined
    */
-  async updateBoardById(BoardDto:CreateBoardDto, id:string):Promise<BoardEntity | undefined> {
-    const updatedBoard  = await this.boardRepository.findOne({ id });
+  async updateBoardById(
+    BoardDto: CreateBoardDto,
+    id: string,
+  ): Promise<BoardEntity | undefined> {
+    const updatedBoard = await this.boardRepository.findOne({ id });
     if (!updatedBoard) {
       return;
     }
@@ -52,8 +58,7 @@ export class BoardService {
    * @param id - id of Board
    * @returns Promise boolean
    */
-  async deleteBoardById(id:string):Promise<boolean> {
-    return !!(await this.boardRepository.delete({ id})).affected;
+  async deleteBoardById(id: string): Promise<boolean> {
+    return !!(await this.boardRepository.delete({ id })).affected;
   }
-
 }

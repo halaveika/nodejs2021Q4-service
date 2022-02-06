@@ -6,9 +6,9 @@ import { ColumnService } from './column.service';
 import { ColumnController } from './column.controller';
 
 @Module({
-  imports:[TypeOrmModule.forFeature([ColumnEntity]),AuthModule],
-  exports:[TypeOrmModule],
+  imports: [TypeOrmModule.forFeature([ColumnEntity]), AuthModule],
+  exports: [TypeOrmModule],
   providers: [ColumnService],
-  controllers: [ColumnController]
+  controllers: [ColumnController],
 })
 export class ColumnModule {}

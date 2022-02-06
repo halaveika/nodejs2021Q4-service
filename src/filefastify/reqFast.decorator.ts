@@ -1,5 +1,5 @@
-import { createParamDecorator,ExecutionContext} from '@nestjs/common';
-import { FastifyRequest } from "fastify";
+import { createParamDecorator, ExecutionContext } from '@nestjs/common';
+import { FastifyRequest } from 'fastify';
 
 export const ReqFast = createParamDecorator(
   (data: unknown, ctx: ExecutionContext) => {

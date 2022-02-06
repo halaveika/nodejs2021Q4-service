@@ -4,8 +4,8 @@ import { FilefastifyService } from './file-fastify.service';
 import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
-  imports:[AuthModule],
+  imports: [AuthModule],
   controllers: [FilefastifyController],
-  providers: [FilefastifyService]
+  providers: [FilefastifyService],
 })
 export class FileFastifyModule {}

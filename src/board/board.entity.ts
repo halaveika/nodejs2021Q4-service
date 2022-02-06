@@ -1,20 +1,26 @@
-import { Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BaseEntity, ManyToMany, JoinTable } from "typeorm";
-import { v4 as uuidv4 } from "uuid";
-import { ColumnEntity } from "../column/column.entity";
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  BeforeInsert,
+  BaseEntity,
+} from 'typeorm';
+import { v4 as uuidv4 } from 'uuid';
+import { ColumnEntity } from '../column/column.entity';
 
-@Entity("boards")
+@Entity('boards')
 export class BoardEntity extends BaseEntity {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id!: string;
 
-  @Column({ type: "varchar", length: 255})
+  @Column({ type: 'varchar', length: 255 })
   title!: string;
 
   @Column({
     type: 'jsonb',
     nullable: true,
-})
-  columns!:  ColumnEntity[]
+  })
+  columns!: ColumnEntity[];
 
   @BeforeInsert()
   async addId(): Promise<void> {
