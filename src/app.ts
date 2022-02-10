@@ -6,7 +6,6 @@ import userRouter from './resources/users/user.router';
 import taskRouter from './resources/tasks/task.router';
 import logger from './common/logger';
 import errorHandler from './common/errorHandler';
-import "reflect-metadata"
 
 const app: FastifyInstance = fastify({logger})
 app.register(fastifySwagger,

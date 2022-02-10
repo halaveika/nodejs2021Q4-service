@@ -51,14 +51,14 @@ export const updateTaskById = async(task:Task, boardId:string, taskId:string):Pr
  * Returns deleted Task by boardId & taskId
  * @param boardId - id of Board
  * @param taskId - id of Task
- * @returns Promise boolean
+ * @returns Promise of Task or undefined
  */
-export const deleteTaskById = async(boardId:string, taskId:string):Promise<boolean> => {
+export const deleteTaskById = async(boardId:string, taskId:string):Promise<Task | undefined> => {
   const index = taskStore.findIndex(task => task.id === taskId && task.boardId === boardId );
   if (index === -1) {
-    return false;
+    return undefined;
   } 
-  return true;
+  return taskStore.splice(index, 1)[0];
 }
 
 

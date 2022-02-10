@@ -29,32 +29,19 @@ For more information about OpenAPI/Swagger please visit https://swagger.io/.
 
 ## Running application in Docker
 
-```
-npm run dev:docker 
-```
-or
-
-```
 docker-compose up --build
-```
 
 You should wait while the containers -app and -postgres run in development mode;
 
-```
 docker exec -i -t app /bin/bash
-```
 
 You can get into -app container with this command
 
-```
 docker stop app postgres
-```
 
 This command stop -app and -postgres containers
 
-```
 docker rm app postgres
-```
 
 This command delete -app and -postgres containers
 
@@ -121,29 +108,3 @@ The logging level is a minimum level. For instance if logger.level is 'info' the
 
 You can pass 'silent' to disable logging:
 where **LOG_LEVEL** > 5 or no specify
-
-### Migrations for data base
-
-```
-npm run entity:create <entity name>
-```
-
-To create class for typerom entity
-
-```
-npm run migrate:generate
-```
-
-To generate migration for database
-
-```
-npm run migrate:run
-```
-
-To run current migration in database
-
-```
-npm run migrate:revert
-```
-Return to the previos migration state
-
