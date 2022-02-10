@@ -27,37 +27,6 @@ After starting the app on port (4000 as default) you can open
 in your browser OpenAPI documentation by typing http://localhost:4000/doc/.
 For more information about OpenAPI/Swagger please visit https://swagger.io/.
 
-## Running application in Docker
-
-```
-npm run dev:docker 
-```
-or
-
-```
-docker-compose up --build
-```
-
-You should wait while the containers -app and -postgres run in development mode;
-
-```
-docker exec -i -t app /bin/bash
-```
-
-You can get into -app container with this command
-
-```
-docker stop app postgres
-```
-
-This command stop -app and -postgres containers
-
-```
-docker rm app postgres
-```
-
-This command delete -app and -postgres containers
-
 ## Testing
 
 After application running open new terminal and enter:
@@ -101,49 +70,3 @@ npm run lint
 Press <kbd>F5</kbd> to debug.
 
 For more information, visit: https://code.visualstudio.com/docs/editor/debugging
-
-
-### Logging level in environment variable;
-
-You can manage Logging level by environment variable (LOG_LEVEL in .env)
-Set this **LOG_LEVEL** number from 0 to 5 to the desired logging level.
-In order of priority, available levels are:
-
-0. 'fatal'
-1. 'error'
-2. 'warn'
-3. 'info'
-4. 'debug'
-5. 'trace'
-
-Example: logger.level = 'info'
-The logging level is a minimum level. For instance if logger.level is 'info' then all 'fatal', 'error', 'warn', and 'info' logs will be enabled.
-
-You can pass 'silent' to disable logging:
-where **LOG_LEVEL** > 5 or no specify
-
-### Migrations for data base
-
-```
-npm run entity:create <entity name>
-```
-
-To create class for typerom entity
-
-```
-npm run migrate:generate
-```
-
-To generate migration for database
-
-```
-npm run migrate:run
-```
-
-To run current migration in database
-
-```
-npm run migrate:revert
-```
-Return to the previos migration state
-
