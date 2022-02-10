@@ -10,4 +10,4 @@ RUN npm ci
 
 COPY . .
 
-CMD [ "npm","run","dev:migrate"]
+CMD [ "npm","run","dev"]
