@@ -1,5 +1,6 @@
 import {config} from './common/config'
 import app from './app';
+import logger from './common/logger';
 
 /**
  * Staring listen server on current port
@@ -7,11 +8,21 @@ import app from './app';
 const start = async () => {
   try {
     await app.listen(config.PORT, () =>
-    console.log(`App is running on http://localhost:${config.PORT}`)
+    logger.info(`App is running on http://localhost: ${config.PORT} and logger level: ${config.LOG_LEVEL}`)
   )
   } catch (error) {
-    app.log.error(error)
+    logger.error(error)
     process.exit(1)
   }
 }
 start();
+
+process.on("unhandledRejection", (reason:unknown, promise:Promise<unknown>): void => {
+  logger.fatal("Unexpected exception occured", { reason, ex: promise });
+  process.exit(1);
+})
+
+process.on("uncaughtException", error => {
+  logger.fatal(error.message);
+  process.exit(1);
+});
