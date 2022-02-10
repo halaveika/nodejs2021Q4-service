@@ -1,9 +1,0 @@
-node_modules
-dist
-data
-docker
-.git
-.gitignore
-.vscode
-README.md
-logs
