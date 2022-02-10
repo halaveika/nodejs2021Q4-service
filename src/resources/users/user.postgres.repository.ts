@@ -1,7 +1,6 @@
 import { User } from '../../types/User.type';
 import {UserEntity} from '../../db/entity/user';
 import connection from '../../server';
-import {generatePassword} from '../login/login.handler'
 
 const getUserRepository = async() => connection.then(c => c.getRepository(UserEntity));
 
@@ -25,8 +24,7 @@ export const getUserById = async(id:string):Promise<User | undefined> => getUser
  */
 export const createUser = async(user:User):Promise<User> => {
   const userRepository = await getUserRepository();
-  const {password} = user;
-  return userRepository.save({...user,password: await generatePassword(password!)})
+  return userRepository.save({...user})
 }
 
 /**
@@ -41,8 +39,7 @@ export const updateUserById = async(user:User, id :string):Promise<User | undefi
   if (!updatedUser) {
     return;
   }
-  const {password} = user;
-  return userRepository.save({ updatedUser, ...user,password: await generatePassword(password!) });
+  return userRepository.save({ updatedUser, ...user });
 }
 
 /**

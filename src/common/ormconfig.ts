@@ -31,7 +31,5 @@ export default {
  cli: {
   "entitiesDir":path.join(__dirname, "../db/entity"),
   "migrationsDir":path.join(__dirname, "../db/migration")
- },
- seeds: [path.join(__dirname, "src/db/seeds/*{.ts,.js}")],
- factories: [path.join(__dirname, "src/db/factories/*{.ts,.js}")]
+ }
 } as ConnectionOptions;
