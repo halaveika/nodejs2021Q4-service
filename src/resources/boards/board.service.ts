@@ -1,8 +1,8 @@
-const {requestBoardSchema,responseBoardSchema} = require('./board.model');
-const { getAllBoardsHandler,getBoardByIdHandler,createBoardHandler, updateBoardByIdHandler,deleteBoardByIdHandler } = require('./board.handler');
+import {requestBoardSchema,responseBoardSchema} from './board.model';
+import { getAllBoardsHandler,getBoardByIdHandler,createBoardHandler, updateBoardByIdHandler,deleteBoardByIdHandler } from './board.handler';
 
 
-const getBoards = {
+export const getBoards = {
     schema: {
       response: {
         200: {
@@ -14,7 +14,7 @@ const getBoards = {
     handler: getAllBoardsHandler
 }
 
-const getBoard = {
+export const getBoard = {
   schema: {
     querystring: {
       boardId: { type: 'string' }
@@ -26,7 +26,7 @@ const getBoard = {
   handler: getBoardByIdHandler
 }
 
-const postBoard = {
+export const postBoard = {
   schema: {
     body: requestBoardSchema,
     response: {
@@ -36,7 +36,7 @@ const postBoard = {
   handler: createBoardHandler,
 }
 
-const putBoard = {
+export const putBoard = {
   schema: {
     querystring: {
       boardId: { type: 'string' }
@@ -49,7 +49,7 @@ const putBoard = {
   handler: updateBoardByIdHandler,
 }
 
-const deleteBoard = {
+export const deleteBoard = {
 
   schema: {
     querystring: {
@@ -65,5 +65,3 @@ const deleteBoard = {
   handler: deleteBoardByIdHandler
 
 }
-
-module.exports = { getBoards, getBoard, postBoard, putBoard, deleteBoard };

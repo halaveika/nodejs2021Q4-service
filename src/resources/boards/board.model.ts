@@ -1,5 +1,6 @@
-const Column = {
+export const Column = {
   type: 'object',
+  required: ['title','order'],
   properties: {
     id: { type: 'string' },
     title: { type: 'string' },
@@ -7,9 +8,8 @@ const Column = {
   }
 }
 
-const requestBoardSchema = {
+export const requestBoardSchema = {
   type: 'object',
-  required: ['title','columns'],
   properties: {
     title: { type: 'string' },
     columns:{
@@ -19,11 +19,11 @@ const requestBoardSchema = {
   }
 }
 
-const responseBoardSchema = {
+export const responseBoardSchema = {
   type: 'object',
   required: ['title','id','columns'],
   properties: {
-    id: { type: 'string' },
+    id: { type: 'string', format: 'uuid'  },
     title: { type: 'string' },
     columns:{
       type: 'array',
@@ -31,11 +31,6 @@ const responseBoardSchema = {
     }
   }
 }
-
-
-
-
-module.exports = {requestBoardSchema,responseBoardSchema};
 
 
 

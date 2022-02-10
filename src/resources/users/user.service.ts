@@ -1,8 +1,8 @@
-const {requestUserSchema,responseUserSchema} = require('./user.model');
-const { getAllUsersHandler,getUserByIdHandler,createUserHandler, updateUserByIdHandler,deleteUserByIdHandler } = require('./user.handler');
+import {requestUserSchema,responseUserSchema} from './user.model';
+import { getAllUsersHandler,getUserByIdHandler,createUserHandler, updateUserByIdHandler,deleteUserByIdHandler } from './user.handler';
 
 
-const getUsers = {
+export const getUsers = {
     schema: {
       response: {
         200: {
@@ -14,7 +14,7 @@ const getUsers = {
     handler: getAllUsersHandler
 }
 
-const getUser = {
+export const getUser = {
   schema: {
     querystring: {
       id: { type: 'string' }
@@ -26,7 +26,7 @@ const getUser = {
   handler: getUserByIdHandler
 }
 
-const postUser = {
+export const postUser = {
   schema: {
     body: requestUserSchema,
     response: {
@@ -36,7 +36,7 @@ const postUser = {
   handler: createUserHandler,
 }
 
-const putUser = {
+export const putUser = {
   schema: {
     querystring: {
       id: { type: 'string' }
@@ -49,7 +49,7 @@ const putUser = {
   handler: updateUserByIdHandler,
 }
 
-const deleteUser = {
+export const deleteUser = {
 
   schema: {
     querystring: {
@@ -65,5 +65,3 @@ const deleteUser = {
   handler: deleteUserByIdHandler
 
 }
-
-module.exports = { getUsers, getUser, postUser, putUser, deleteUser };
