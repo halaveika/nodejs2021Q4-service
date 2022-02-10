@@ -1,10 +1,14 @@
+import { createConnection } from "typeorm";
 import {config} from './common/config'
+import ormconfig  from "./common/ormconfig";
 import app from './app';
 import logger from './common/logger';
 
+const connection = createConnection(ormconfig);
 /**
  * Staring listen server on current port
  */
+
 const start = async () => {
   try {
     await app.listen(config.PORT, config.BACKEND_HOST, () =>
@@ -15,7 +19,11 @@ const start = async () => {
     process.exit(1)
   }
 }
-start();
+
+connection.then(()=>{
+  logger.info("DB was Connected");
+  start()},
+  error => logger.error(error.message));
 
 process.on("unhandledRejection", (reason:unknown, promise:Promise<unknown>): void => {
   logger.fatal("Unexpected exception occured", { reason, ex: promise });
@@ -26,3 +34,5 @@ process.on("uncaughtException", error => {
   logger.fatal(error.message);
   process.exit(1);
 });
+
+export default connection;

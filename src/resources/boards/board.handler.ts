@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
-import {getAllBoards, getBoardById, createBoard, updateBoardById, deleteBoardById} from './board.memory.repository';
+import {getAllBoards, getBoardById, createBoard, updateBoardById, deleteBoardById} from './board.postgres.repository';
 import {BoardReq,BoardReqParams,BoardReqBody} from '../../types/Board.request.type';
 import { Board } from '../../types/Board.type';
 

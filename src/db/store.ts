@@ -27,7 +27,7 @@ export const boardStore:Board[] = [
   {
     id: 'f40fe24a-8e8b-4578-bae1-eb375bb1e48f',
     title: 'homework',
-    columns: [ { title: 'nodejs task 4', order: 1 }]
+    columns: [ {id:'3261d033-f73c-407d-8342-fb7dff401203', title: 'nodejs task 4', order: 1 }]
 }
 
 ]
