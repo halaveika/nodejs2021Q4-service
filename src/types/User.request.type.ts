@@ -14,8 +14,3 @@ export type UserReqParams = FastifyRequest<{
 export type UserReqBody = FastifyRequest<{
   Body: Omit<User, 'password'>;
 }>
-
-
-export type LoginReqBody = FastifyRequest<{
-  Body: Omit<User, 'id'>;
-}>

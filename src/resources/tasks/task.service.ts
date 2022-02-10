@@ -1,25 +1,22 @@
 import {requestTaskSchema,responseTaskSchema} from './task.model';
 import { getAllTasksHandler,getTaskByIdHandler,createTaskHandler, updateTaskByIdHandler,deleteTaskByIdHandler } from './task.handler';
-import { validateHook } from '../../hooks/auth';
 
 export const getTasks = {
-  preValidation: validateHook,
-  schema: {
-    querystring: {
-      boardId: { type: 'string' }
-    },
-    response: {
-      200: {
-        type: 'array',
-        items: responseTaskSchema,
+    schema: {
+      querystring: {
+        boardId: { type: 'string' }
+      },
+      response: {
+        200: {
+          type: 'array',
+          items: responseTaskSchema,
+        },
       },
     },
-  },
-  handler: getAllTasksHandler
+    handler: getAllTasksHandler
 }
 
 export const getTask = {
-  preValidation: validateHook,
   schema: {
     querystring: {
       boardId: { type: 'string' },
@@ -33,7 +30,6 @@ export const getTask = {
 }
 
 export const postTask = {
-  preValidation: validateHook,
   schema: {
     querystring: {
       boardId: { type: 'string' }
@@ -47,7 +43,6 @@ export const postTask = {
 }
 
 export const putTask = {
-  preValidation: validateHook,
   schema: {
     querystring: {
       boardId: { type: 'string' },
@@ -62,7 +57,7 @@ export const putTask = {
 }
 
 export const deleteTask = {
-  preValidation: validateHook,
+
   schema: {
     querystring: {
       boardId: { type: 'string' },
@@ -76,4 +71,5 @@ export const deleteTask = {
     },
   },
   handler: deleteTaskByIdHandler
+
 }
