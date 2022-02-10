@@ -1,12 +1,12 @@
 import fastify, { FastifyInstance } from 'fastify';
+import "reflect-metadata";
 import * as path from 'path';
 import fastifySwagger from 'fastify-swagger';
 import boardRouter from './resources/boards/board.router';
 import userRouter from './resources/users/user.router';
 import taskRouter from './resources/tasks/task.router';
+import loginRouter from './resources/login/login.router';
 import logger from './common/logger';
-import errorHandler from './common/errorHandler';
-import "reflect-metadata"
 
 const app: FastifyInstance = fastify({logger})
 app.register(fastifySwagger,
@@ -22,7 +22,7 @@ app.register(fastifySwagger,
     baseDir: '/doc',
   },
 });
-app.setErrorHandler(errorHandler);
+app.register(loginRouter);
 app.register(userRouter);
 app.register(boardRouter);
 app.register(taskRouter, { prefix: 'boards/:boardId'});
