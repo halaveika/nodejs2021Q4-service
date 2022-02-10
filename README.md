@@ -70,23 +70,3 @@ npm run lint
 Press <kbd>F5</kbd> to debug.
 
 For more information, visit: https://code.visualstudio.com/docs/editor/debugging
-
-
-### Logging level in environment variable;
-
-You can manage Logging level by environment variable (LOG_LEVEL in .env)
-Set this **LOG_LEVEL** number from 0 to 5 to the desired logging level.
-In order of priority, available levels are:
-
-0. 'fatal'
-1. 'error'
-2. 'warn'
-3. 'info'
-4. 'debug'
-5. 'trace'
-
-Example: logger.level = 'info'
-The logging level is a minimum level. For instance if logger.level is 'info' then all 'fatal', 'error', 'warn', and 'info' logs will be enabled.
-
-You can pass 'silent' to disable logging:
-where **LOG_LEVEL** > 5 or no specify

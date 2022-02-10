@@ -4,5 +4,4 @@ export default interface IConfig {
   MONGO_CONNECTION_STRING: string,
   JWT_SECRET_KEY: string ,
   AUTH_MODE: boolean,
-  LOG_LEVEL: string
 }
