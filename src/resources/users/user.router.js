@@ -1,19 +1,11 @@
-const { getUsers, getUser, postUser, putUser, deleteUser } = require('./user.service');
+const router = require('express').Router();
+const User = require('./user.model');
+const usersService = require('./user.service');
 
+router.route('/').get(async (req, res) => {
+  const users = await usersService.getAll();
+  // map user fields to exclude secret fields like "password"
+  res.json(users.map(User.toResponse));
+});
 
-function userRouter(app, options, done) {
-  
-  app.get('/users', getUsers)
-
-  app.get('/users/:id', getUser)
-
-  app.post('/users', postUser)
-
-  app.delete('/users/:id', deleteUser)
-
-  app.put('/users/:id', putUser)
-
-  done()
-}
-
-module.exports = userRouter
+module.exports = router;
