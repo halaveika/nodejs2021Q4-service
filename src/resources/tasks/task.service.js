@@ -1,7 +1,8 @@
-import {requestTaskSchema,responseTaskSchema} from './task.model';
-import { getAllTasksHandler,getTaskByIdHandler,createTaskHandler, updateTaskByIdHandler,deleteTaskByIdHandler } from './task.handler';
+const {requestTaskSchema,responseTaskSchema} = require('./task.model');
+const { getAllTasksHandler,getTaskByIdHandler,createTaskHandler, updateTaskByIdHandler,deleteTaskByIdHandler } = require('./task.handler');
 
-export const getTasks = {
+
+const getTasks = {
     schema: {
       querystring: {
         boardId: { type: 'string' }
@@ -16,7 +17,7 @@ export const getTasks = {
     handler: getAllTasksHandler
 }
 
-export const getTask = {
+const getTask = {
   schema: {
     querystring: {
       boardId: { type: 'string' },
@@ -29,7 +30,7 @@ export const getTask = {
   handler: getTaskByIdHandler
 }
 
-export const postTask = {
+const postTask = {
   schema: {
     querystring: {
       boardId: { type: 'string' }
@@ -42,7 +43,7 @@ export const postTask = {
   handler: createTaskHandler,
 }
 
-export const putTask = {
+const putTask = {
   schema: {
     querystring: {
       boardId: { type: 'string' },
@@ -56,7 +57,7 @@ export const putTask = {
   handler: updateTaskByIdHandler,
 }
 
-export const deleteTask = {
+const deleteTask = {
 
   schema: {
     querystring: {
@@ -73,3 +74,5 @@ export const deleteTask = {
   handler: deleteTaskByIdHandler
 
 }
+
+module.exports = { getTasks, getTask, postTask, putTask, deleteTask };

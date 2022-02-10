@@ -1,8 +1,4 @@
-import { User } from "../types/User.type";
-import {Task}  from "../types/Task.type";
-import { Board } from "../types/Board.type";
-
-export const userStore:User[] = [
+const userStore = [
  {
    id: 'e4727e7d-0731-4eca-ae7b-f669923f746c',
    name: 'Alex',
@@ -23,7 +19,7 @@ export const userStore:User[] = [
  }
 ]
 
-export const boardStore:Board[] = [
+const boardStore = [
   {
     id: 'f40fe24a-8e8b-4578-bae1-eb375bb1e48f',
     title: 'homework',
@@ -32,7 +28,7 @@ export const boardStore:Board[] = [
 
 ]
 
-export const taskStore:Task[] = [
+const taskStore = [
   {
   id: '3261d033-f73c-407d-8342-fb7dff401203',
   title: 'nodejs task 4',
@@ -46,3 +42,4 @@ export const taskStore:Task[] = [
 ]
 
 
+module.exports = {boardStore, userStore, taskStore}
