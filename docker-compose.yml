@@ -1,43 +1,39 @@
-version: "3.8"
+version: "3.5"
 services: 
   postgres:
     build:
       context: .
       dockerfile: docker/db.Dockerfile
-    container_name: "postgres"
     env_file:
-      - .env
+      - .development.env
+    container_name: postgres
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
     networks:
       - rsschool
-    environment: 
-      POSTGRES_DB: ${TYPEORM_DATABASE}
-      POSTGRES_USER: ${TYPEORM_USERNAME}
-      POSTGRES_PASSWORD: ${TYPEORM_PASSWORD}
-    ports:
-      - ${TYPEORM_PORT}:${TYPEORM_PORT}
     volumes:
-      - db:/var/lib/postgresql/data
+      - db:/var/lib/postresql/data
   app:
     build:
       context: .
       dockerfile: docker/app.Dockerfile
+    env_file:
+      - .development.env
     container_name: "app"
-    depends_on:
-      - postgres
     ports: 
       - ${PORT}:${PORT}
+    depends_on:
+      - postgres
+    restart: always
     volumes:
       - ./src:/usr/src/app/src
+      - ./public:/usr/src/app/public
       - logs:/usr/src/app/logs
-    restart: always
-    env_file:
-      - .env
     networks:
       - rsschool
 networks:
   rsschool:
     driver: bridge
-
 volumes:
-  db:
   logs:
+  db:
