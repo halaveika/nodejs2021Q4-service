@@ -4,10 +4,8 @@ import fastifySwagger from 'fastify-swagger';
 import boardRouter from './resources/boards/board.router';
 import userRouter from './resources/users/user.router';
 import taskRouter from './resources/tasks/task.router';
-import logger from './common/logger';
-import errorHandler from './common/errorHandler';
 
-const app: FastifyInstance = fastify({logger})
+const app: FastifyInstance = fastify()
 app.register(fastifySwagger,
 {
   mode: 'static',
@@ -20,8 +18,7 @@ app.register(fastifySwagger,
     },
     baseDir: '/doc',
   },
-});
-app.setErrorHandler(errorHandler);
+})
 app.register(userRouter);
 app.register(boardRouter);
 app.register(taskRouter, { prefix: 'boards/:boardId'});
