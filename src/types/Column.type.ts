@@ -1,5 +1,4 @@
-export type column = {
-  id: string,
+export type Column = {
   title: string,
   order: number | null
 }

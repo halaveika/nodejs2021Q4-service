@@ -1,5 +1,5 @@
 import { FastifyReply } from 'fastify';
-import {getAllTasks, getTaskById, createTask, updateTaskById, deleteTaskById} from './task.postgres.repository';
+import {getAllTasks, getTaskById, createTask, updateTaskById, deleteTaskById} from './task.memory.repository';
 import {TaskReqBodyParams, TaskReqParams, TaskReqBodyParam, TaskReqParam} from '../../types/Task.request.type';
 
 /**

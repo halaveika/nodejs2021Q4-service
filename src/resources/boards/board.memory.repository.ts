@@ -46,15 +46,15 @@ export const updateBoardById = async(board:Board, id:string):Promise<Board | und
 /**
  * Returns deleted Board by id & delete all tasks on deleted Board
  * @param id - id of Board
- * @returns Promise boolean
+ * @returns Promise of Board or undefined
  */
-export const deleteBoardById = async(id:string):Promise<boolean> => {
+export const deleteBoardById = async(id:string):Promise<Board | undefined> => {
   const indexDeletedBoard = boardStore.findIndex(board => board.id === id);
   if (indexDeletedBoard === -1) {
-    return false;
+    return undefined;
   }
   deletTasksWithBoard(taskStore,id)
-  return true;
+  return boardStore.splice(indexDeletedBoard, 1)[0];
 }
 
 

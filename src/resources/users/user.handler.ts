@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
-import {getAllUsers, getUserById, createUser, updateUserById, deleteUserById}from './user.postgres.repository';
+import {getAllUsers, getUserById, createUser, updateUserById, deleteUserById}from './user.memory.repository';
 import {UserReq, UserReqParams, UserReqBody} from '../../types/User.request.type';
 
 /**

@@ -10,15 +10,10 @@
   "main": "dist/server.js",
   "scripts": {
     "start": "tsc && node .",
-    "dev": "nodemon --watch './**/*.ts' --exec ts-node src/server.ts --exitcrash",
-    "dev:docker": "docker-compose up --build",
+    "dev": "nodemon --watch './**/*.ts' --exec ts-node src/server.ts",
     "lint": "eslint --ext .js,.ts --fix src/",
     "test": "cross-env DEBUG=rs:* jest --testMatch \"<rootDir>/test/e2e/test/*.test.js\"",
-    "test:auth": "cross-env DEBUG=rs:* TEST_MODE=auth jest --noStackTrace",
-    "entity:create": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm -f ./src/common/ormconfig.ts entity:create -n",
-    "migrate:generate": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm -f ./src/common/ormconfig.ts migration:generate -n",
-    "migrate:run": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm -f ./src/common/ormconfig.ts migration:run",
-    "migrate:revert": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm -f ./src/common/ormconfig.ts migration:revert"
+    "test:auth": "cross-env DEBUG=rs:* TEST_MODE=auth jest --noStackTrace"
   },
   "keywords": [
     "rss",
@@ -50,16 +45,13 @@
     "dotenv": "10.0.0",
     "fastify": "^3.24.1",
     "fastify-swagger": "^4.12.6",
-    "pg": "^8.7.1",
     "pino": "^7.6.1",
     "pino-pretty": "^7.3.0",
-    "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.41",
     "uuid": "8.3.2",
     "yamljs": "0.3.0"
   },
   "devDependencies": {
-    "@types/node": "^16.11.19",
+    "@types/node": "^16.11.12",
     "@types/uuid": "^8.3.3",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@typescript-eslint/parser": "^5.6.0",
