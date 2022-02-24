@@ -1,12 +1,8 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
-import { UtilsService } from '../../utils/utils.service';
 import * as bcrypt from 'bcrypt';
 
 export class Rsschool1644013876564 implements MigrationInterface {
   name = 'Rsschool1644013876564';
-  // constructor(private utilsService: UtilsService){
-
-  // }
 
   async generatePassword(password: string) {
     const setRounds = 10;
