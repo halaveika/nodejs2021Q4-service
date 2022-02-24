@@ -10,21 +10,21 @@ export class CreateTaskDto {
     { message: 'should be number' },
   )
   @Min(0, { message: 'should be => 0' })
-  order!: number | null;
+  order: number | null;
 
   @IsOptional()
   @IsString({ message: 'should be string' })
-  description?: string | null;
+  description: string | null;
 
   @IsOptional()
   @IsUUID(4, { message: 'should be UUID format' })
-  userId?: string | null;
+  userId!: string | null;
 
   @IsOptional()
   @IsUUID(4, { message: 'should be UUID format' })
-  boardId?: string | null;
+  boardId: string | null;
 
   @IsOptional()
   @IsUUID(4, { message: 'should be UUID format' })
-  columnId?: string | null;
+  columnId: string | null;
 }

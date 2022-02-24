@@ -60,11 +60,11 @@ export class TaskService {
     boardId: string,
     taskId: string,
   ): Promise<TaskEntity | undefined> {
-    const updatedTask = this.taskRepository.findOne({ id: taskId, boardId });
+    const updatedTask = await this.taskRepository.findOne({ id: taskId, boardId });
     if (!updatedTask) {
       return;
     }
-    return this.taskRepository.save({ updatedTask, ...taskDto });
+    return this.taskRepository.save({ ...updatedTask, ...taskDto });
   }
 
   /**

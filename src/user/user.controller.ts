@@ -17,7 +17,7 @@ import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { UserEntity } from './user.entity';
 
 @ApiTags('users')
-@UseGuards(AuthGuard)
+// @UseGuards(AuthGuard)
 @Controller('users')
 export class UserController {
   constructor(private userService: UserService) {}

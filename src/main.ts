@@ -19,11 +19,11 @@ async function bootstrap() {
   if (process.env.USE_FASTIFY === 'true') {
     app = await NestFactory.create<NestFastifyApplication>(
       AppModule,
-      new FastifyAdapter(),
+      new FastifyAdapter(),{ cors: true }
     );
     (app as NestFastifyApplication).register(multipart);
   } else {
-    app = await NestFactory.create(AppModule);
+    app = await NestFactory.create(AppModule,{ cors: true });
   }
   const config = new DocumentBuilder()
   .setTitle('Trello killer')

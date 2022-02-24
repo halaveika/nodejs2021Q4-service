@@ -14,33 +14,33 @@ import { BoardEntity } from '../board/board.entity';
 @Entity('tasks')
 export class TaskEntity extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
-  id!: string;
+  id: string;
 
   @Column({ type: 'varchar', length: 255 })
-  title!: string;
+  title: string;
 
   @Column({ type: 'integer', nullable: true })
-  order!: number | null;
+  order: number | null;
 
   @Column({ type: 'varchar', length: 255, nullable: true })
-  description?: string | null;
+  description!: string | null;
 
   @Column({ type: 'uuid', nullable: true })
-  userId?: string | null;
+  userId: string | null;
 
   @Column({ type: 'uuid', nullable: true })
-  boardId?: string | null;
+  boardId: string | null;
 
   @Column({ type: 'uuid', nullable: true })
-  columnId?: string | null;
+  columnId: string | null;
 
   @ManyToOne((type) => UserEntity, { onDelete: 'SET NULL' })
   @JoinColumn({ name: 'userId' })
-  user?: UserEntity;
+  user: UserEntity;
 
   @ManyToOne((type) => BoardEntity, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'boardId' })
-  board?: BoardEntity;
+  board: BoardEntity;
 
   @BeforeInsert()
   async addId(): Promise<void> {

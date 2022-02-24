@@ -17,7 +17,7 @@ import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { BoardEntity } from './board.entity';
 
 @ApiTags('boards')
-@UseGuards(AuthGuard)
+// @UseGuards(AuthGuard)
 @Controller('boards')
 export class BoardController {
   constructor(private boardService: BoardService) {}

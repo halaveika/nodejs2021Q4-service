@@ -17,7 +17,7 @@ import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { TaskEntity } from './task.entity';
 
 @ApiTags('tasks')
-@UseGuards(AuthGuard)
+// @UseGuards(AuthGuard)
 @Controller('boards/:boardId/tasks')
 export class TaskController {
   constructor(private taskService: TaskService) {}

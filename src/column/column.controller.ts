@@ -17,7 +17,7 @@ import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ColumnEntity } from './column.entity';
 
 @ApiTags('columns')
-@UseGuards(AuthGuard)
+// @UseGuards(AuthGuard)
 @Controller('boards/:boardId/columns')
 export class ColumnController {
   constructor(private columnService: ColumnService) {}
