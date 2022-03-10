@@ -29,7 +29,7 @@ export class ColumnService {
     if (!updatedColumn) {
       return;
     }
-    return this.columnRepository.save({ updatedColumn, ...columnDto });
+    return this.columnRepository.save({ ...updatedColumn, ...columnDto });
   }
 
   async deleteColumnById(id: string): Promise<boolean> {

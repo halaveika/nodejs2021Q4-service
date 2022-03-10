@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ColumnService } from 'src/column/column.service';
+import BoardType from 'src/common/types/board-type';
 import { Repository } from 'typeorm';
 import { BoardEntity } from './board.entity';
 import { CreateBoardDto } from './dto/create-board.dto';
@@ -9,13 +11,14 @@ export class BoardService {
   constructor(
     @InjectRepository(BoardEntity)
     private readonly boardRepository: Repository<BoardEntity>,
+    private columnsRepository: ColumnService,
   ) {}
   /**
    * Returns array of Boards
    * @returns Promise of array of Boards
    */
   async getAllBoards(): Promise<BoardEntity[]> {
-    return this.boardRepository.find({});
+    return this.boardRepository.find({ relations: ['columns']});
   }
 
   /**
@@ -24,7 +27,7 @@ export class BoardService {
    * @returns Promise of Board or undefined
    */
   async getBoardById(id: string): Promise<BoardEntity | undefined> {
-    return this.boardRepository.findOne({ id });
+    return this.boardRepository.findOne({ relations: ['columns'], where: { id } });
   }
 
   /**
@@ -32,8 +35,21 @@ export class BoardService {
    * @param board - Board object for creating Board in store
    * @returns Promise of Board
    */
-  async createBoard(BoardDto: CreateBoardDto): Promise<BoardEntity> {
-    return this.boardRepository.save({ ...BoardDto });
+  async createBoard(BoardDto: CreateBoardDto): Promise<BoardType> {
+    const modelBoard = await this.boardRepository.save({ ...BoardDto });
+
+    const columns = await Promise.all(
+      BoardDto.columns.map(async ({ title, order }) => {
+        const columns = await this.columnsRepository.createColumn({ title, order});
+        return { id: columns.id, title: columns.title, order: columns.order };
+      }),
+    );
+    console.log('------------------------------------------');
+    console.log(columns);
+  
+    return  { id: modelBoard.id, title: modelBoard.title, columns:columns };
+    // return this.boardRepository.save({ ...BoardDto });
+ 
   }
 
   /**
@@ -46,11 +62,13 @@ export class BoardService {
     BoardDto: CreateBoardDto,
     id: string,
   ): Promise<BoardEntity | undefined> {
-    const updatedBoard = await this.boardRepository.findOne({ id });
+    const updatedBoard = await this.boardRepository.findOne({ relations: ['columns'], where: { id } });
+    console.log('------------------------------------------');
+    console.log(updatedBoard);
     if (!updatedBoard) {
       return;
     }
-    return this.boardRepository.save({ updatedBoard, ...BoardDto });
+    return this.boardRepository.save({ ...updatedBoard, ...BoardDto });
   }
 
   /**

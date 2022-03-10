@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { FileModule } from './file/file.module';
 import { ColumnModule } from './column/column.module';
 import { FileFastifyModule } from './filefastify/file-fastify.module';
+import { ColumnService } from './column/column.service';
 
 const isFastify = process.env.USE_FASTIFY === 'true' ? true : false;
 

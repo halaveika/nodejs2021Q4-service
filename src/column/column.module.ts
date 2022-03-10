@@ -7,7 +7,7 @@ import { ColumnController } from './column.controller';
 
 @Module({
   imports: [TypeOrmModule.forFeature([ColumnEntity]), AuthModule],
-  exports: [TypeOrmModule],
+  exports: [ColumnService],
   providers: [ColumnService],
   controllers: [ColumnController],
 })

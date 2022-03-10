@@ -15,33 +15,33 @@ export class WinstonLogger implements LoggerService {
 
   constructor() {
     this.winstonLogger = createLogger({
-      transports: [
-        new winston.transports.Console({
-          format: winston.format.combine(
-            winston.format.timestamp(),
-            winston.format.colorize(),
-            nestWinstonModuleUtilities.format.nestLike(),
-          ),
-        }),
-        new winston.transports.File({
-          format: winston.format.combine(
-            winston.format.timestamp(),
-            nestWinstonModuleUtilities.format.nestLike(),
-            winston.format.uncolorize(),
-          ),
-          filename: path.join(__dirname, '../../../logs/all.log'),
-          level: process.env.LOG_LEVEL,
-        }),
-        new winston.transports.File({
-          format: winston.format.combine(
-            winston.format.timestamp(),
-            nestWinstonModuleUtilities.format.nestLike(),
-            winston.format.uncolorize(),
-          ),
-          filename: path.join(__dirname, '../../../logs/error.log'),
-          level: 'error',
-        }),
-      ],
+      // transports: [
+      //   new winston.transports.Console({
+      //     format: winston.format.combine(
+      //       winston.format.timestamp(),
+      //       winston.format.colorize(),
+      //       nestWinstonModuleUtilities.format.nestLike(),
+      //     ),
+      //   }),
+      //   new winston.transports.File({
+      //     format: winston.format.combine(
+      //       winston.format.timestamp(),
+      //       nestWinstonModuleUtilities.format.nestLike(),
+      //       winston.format.uncolorize(),
+      //     ),
+      //     filename: path.join(__dirname, '../../../logs/all.log'),
+      //     level: process.env.LOG_LEVEL,
+      //   }),
+      //   new winston.transports.File({
+      //     format: winston.format.combine(
+      //       winston.format.timestamp(),
+      //       nestWinstonModuleUtilities.format.nestLike(),
+      //       winston.format.uncolorize(),
+      //     ),
+      //     filename: path.join(__dirname, '../../../logs/error.log'),
+      //     level: 'error',
+      //   }),
+      // ],
     });
   }
 

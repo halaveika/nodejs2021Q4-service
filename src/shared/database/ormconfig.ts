@@ -13,7 +13,7 @@ export default {
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DB,
-  synchronize: (process.env.POSTGRES_SYNCHRONIZE === 'true') ? true : false,
+  synchronize: process.env.POSTGRES_SYNCHRONIZE === 'true' ? true : false,
   migrationsRun: true,
   logging: true,
   entities: [BoardEntity, TaskEntity, UserEntity, ColumnEntity],

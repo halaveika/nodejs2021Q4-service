@@ -10,6 +10,7 @@ import {
 import { v4 as uuidv4 } from 'uuid';
 import { UserEntity } from '../user/user.entity';
 import { BoardEntity } from '../board/board.entity';
+import { ColumnEntity } from 'src/column/column.entity';
 
 @Entity('tasks')
 export class TaskEntity extends BaseEntity {
@@ -22,7 +23,7 @@ export class TaskEntity extends BaseEntity {
   @Column({ type: 'integer', nullable: true })
   order: number | null;
 
-  @Column({ type: 'varchar', length: 255, nullable: true })
+  @Column({ type: 'varchar', nullable: true })
   description!: string | null;
 
   @Column({ type: 'uuid', nullable: true })
@@ -31,9 +32,6 @@ export class TaskEntity extends BaseEntity {
   @Column({ type: 'uuid', nullable: true })
   boardId: string | null;
 
-  @Column({ type: 'uuid', nullable: true })
-  columnId: string | null;
-
   @ManyToOne((type) => UserEntity, { onDelete: 'SET NULL' })
   @JoinColumn({ name: 'userId' })
   user: UserEntity;
@@ -41,6 +39,15 @@ export class TaskEntity extends BaseEntity {
   @ManyToOne((type) => BoardEntity, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'boardId' })
   board: BoardEntity;
+
+  @ManyToOne(() => ColumnEntity, (column) => column.tasks, {
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn({ name: 'columnId' })
+  column!: string | null;
+
+  @Column({ nullable: true })
+  columnId!: string;
 
   @BeforeInsert()
   async addId(): Promise<void> {

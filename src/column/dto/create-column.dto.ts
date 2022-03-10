@@ -1,4 +1,4 @@
-import { IsArray, IsString, IsOptional, IsNumber, Min } from 'class-validator';
+import { IsString, IsOptional, IsNumber, Min } from 'class-validator';
 
 export class CreateColumnDto {
   @IsString({ message: 'should be string' })

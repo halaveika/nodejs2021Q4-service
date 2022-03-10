@@ -1,3 +1,4 @@
+import { TaskEntity } from 'src/task/task.entity';
 import {
   Column,
   Entity,
@@ -5,11 +6,12 @@ import {
   BeforeInsert,
   BaseEntity,
   ManyToOne,
+  OneToMany,
 } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
 import { BoardEntity } from '../board/board.entity';
 
-@Entity('tasks')
+@Entity('columns')
 export class ColumnEntity extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
@@ -20,8 +22,16 @@ export class ColumnEntity extends BaseEntity {
   @Column({ type: 'integer', nullable: true })
   order!: number | null;
 
-  @ManyToOne((type) => BoardEntity, { onDelete: 'CASCADE' })
-  board?: BoardEntity;
+  @ManyToOne((type) => BoardEntity, (board) => board.columns, {
+    onDelete: 'CASCADE',
+  })
+  board!: BoardEntity;
+
+  @Column({ nullable: true, select: false })
+  boardId!: string | null;
+
+  @OneToMany(() => TaskEntity, (task) => task.column)
+  tasks!: TaskEntity[];
 
   @BeforeInsert()
   async addId(): Promise<void> {

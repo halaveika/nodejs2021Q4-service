@@ -42,7 +42,7 @@ export class UserService {
     }
     const { password } = userDto;
     await this.userRepository.save({
-      updatedUser,
+      ...updatedUser,
       ...userDto,
       password: await this.utilsService.generatePassword(password!),
     });
