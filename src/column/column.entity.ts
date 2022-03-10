@@ -27,9 +27,6 @@ export class ColumnEntity extends BaseEntity {
   })
   board!: BoardEntity;
 
-  @Column({ nullable: true, select: false })
-  boardId!: string | null;
-
   @OneToMany(() => TaskEntity, (task) => task.column)
   tasks!: TaskEntity[];
 
