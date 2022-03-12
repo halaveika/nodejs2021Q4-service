@@ -18,11 +18,22 @@ import { ColumnEntity } from './column.entity';
 
 @ApiTags('columns')
 // @UseGuards(AuthGuard)
-@Controller('boards/:boardId/columns')
+@Controller('columns')
 export class ColumnController {
   constructor(private columnService: ColumnService) {}
 
   @ApiOperation({ summary: 'Get Columns' })
+  @ApiResponse({ status: 200, type: [ColumnEntity] })
+  @Get()
+  async getColumns() {
+    const columns = await this.columnService.getColumns();
+    if (!columns) {
+      throw new NotFoundException('Columns not found');
+    }
+    return columns;
+  }
+
+  @ApiOperation({ summary: 'Get Column by id' })
   @ApiResponse({ status: 200, type: [ColumnEntity] })
   @Get('/:id')
   async getColumnById(@Param('id') id: string) {

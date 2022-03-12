@@ -1,14 +1,22 @@
-import { IsString, IsOptional, IsNumber, Min } from 'class-validator';
+import { IsString, IsOptional, IsNumber, IsUUID } from 'class-validator';
+import { BoardEntity } from 'src/board/board.entity';
 
 export class CreateColumnDto {
-  @IsString({ message: 'should be string' })
-  title: string;
+  @IsString()
+  @IsUUID(4)
+  @IsOptional()
+  id?: string;
+
+  @IsString()
+  title!: string;
+
+  @IsNumber()
+  order!: number;
 
   @IsOptional()
-  @IsNumber(
-    { allowInfinity: false, allowNaN: false },
-    { message: 'should be number' },
-  )
-  @Min(0, { message: 'should be => 0' })
-  order!: number | null;
+  @IsUUID(4, { message: 'should be UUID format' })
+  boardId: string | null;
+
+  @IsOptional()
+  board!: BoardEntity;
 }

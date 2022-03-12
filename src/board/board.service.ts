@@ -18,11 +18,10 @@ export class BoardService {
    * @returns Promise of array of Boards
    */
   async getAllBoards(): Promise<BoardEntity[]> {
-    const boards = await this.boardRepository.find({
-      relations: ['columns']
-    });
-    console.log(boards)
-    return boards
+    return this.boardRepository
+    .createQueryBuilder('board')
+    .leftJoinAndSelect('board.columns','column')
+    .getMany();
   }
 
   /**
@@ -31,9 +30,11 @@ export class BoardService {
    * @returns Promise of Board or undefined
    */
   async getBoardById(id: string): Promise<BoardEntity | undefined> {
-    const board = await this.boardRepository.findOne({ relations: ['columns'], where: { id }});
-    console.log(board)
-    return board
+    return this.boardRepository
+    .createQueryBuilder('board')
+    .where('board.id=:id', { id })
+    .leftJoinAndSelect('board.columns', 'column')
+    .getOne();
   }
 
   /**
@@ -43,10 +44,9 @@ export class BoardService {
    */
   async createBoard(BoardDto: CreateBoardDto): Promise<BoardType> {
     const modelBoard = await this.boardRepository.save({ ...BoardDto });
-
     const columns = await Promise.all(
       BoardDto.columns.map(async ({ title, order }) => {
-        const columns = await this.columnsRepository.createColumn({ title, order});
+        const columns = await this.columnsRepository.createColumn({ title, order,boardId: modelBoard.id,board:modelBoard});
         return { id: columns.id, title: columns.title, order: columns.order };
       }),
     );
@@ -68,8 +68,6 @@ export class BoardService {
     if (!updatedBoard) {
       return;
     }
-    console.log('-----------------------------------');
-    console.log(updatedBoard);
     return this.boardRepository.save({ ...updatedBoard, ...BoardDto });
   }
 

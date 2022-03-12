@@ -6,7 +6,6 @@ import {
   BeforeInsert,
   BaseEntity,
   OneToMany,
-  JoinColumn,
 } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
 import { ColumnEntity } from '../column/column.entity';
@@ -19,11 +18,15 @@ export class BoardEntity extends BaseEntity {
   @Column({ type: 'varchar', length: 255 })
   title!: string;
 
-  @OneToMany(() => ColumnEntity, (column) => column.board)
-  @JoinColumn({ name: 'columns' })
+  @OneToMany(() => ColumnEntity, (column) => column.board, {
+    eager: true,
+    cascade: true,
+  })
   columns!: ColumnEntity[];
 
-  @OneToMany(() => TaskEntity, (task) => task.board)
+  @OneToMany(() => TaskEntity, (task) => task.boardId, {
+    cascade: true,
+  })
   tasks!: TaskEntity[];
 
   @BeforeInsert()

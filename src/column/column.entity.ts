@@ -22,12 +22,18 @@ export class ColumnEntity extends BaseEntity {
   @Column({ type: 'integer', nullable: true })
   order!: number | null;
 
-  @ManyToOne((type) => BoardEntity, (board) => board.columns, {
+  @Column({ type: 'uuid', nullable: true, select:false })
+  boardId: string | null;
+
+  @ManyToOne(() => BoardEntity, (board) => board.columns, {
     onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
   })
   board!: BoardEntity;
 
-  @OneToMany(() => TaskEntity, (task) => task.column)
+  @OneToMany(() => TaskEntity, (task) => task.boardId, {
+    cascade: true,
+  })
   tasks!: TaskEntity[];
 
   @BeforeInsert()

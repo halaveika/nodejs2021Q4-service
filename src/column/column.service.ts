@@ -11,6 +11,10 @@ export class ColumnService {
     private readonly columnRepository: Repository<ColumnEntity>,
   ) {}
 
+  async getColumns(): Promise<ColumnEntity[]> {
+    return (await this.columnRepository.find({})) as ColumnEntity[]
+  }
+
   async getColumnById(id: string): Promise<ColumnEntity | undefined> {
     return (await this.columnRepository.findOne({ id })) as
       | ColumnEntity
@@ -18,7 +22,7 @@ export class ColumnService {
   }
 
   async createColumn(columnDto: CreateColumnDto): Promise<ColumnEntity> {
-    return this.columnRepository.save({ ...columnDto });
+    return this.columnRepository.save(columnDto);
   }
 
   async updateColumnById(
